@@ -93,12 +93,13 @@
               <svg class="icon"><use href="#i-search"/></svg>
               <span>Search for help</span>
             </button>
+            <div id="map-filter" class="chips map-filter" role="group" aria-label="Show one type of service"></div>
             <div id="map" class="map" aria-label="Map showing service locations"></div>
             <div class="map-footer">
               <ul class="map-legend" aria-label="Map key">
                 <li><span class="legend-dot here" aria-hidden="true"></span>You</li>
-                <li><span class="legend-dot service" aria-hidden="true"></span>Services</li>
               </ul>
+              <p id="map-count" class="muted small" aria-live="polite"></p>
               <p id="map-status" class="muted small" aria-live="polite"></p>
             </div>
           </section>

@@ -346,7 +346,7 @@ textarea { resize: vertical; }
   border-radius: var(--radius);
 }
 .leaflet-container { font-family: inherit; }
-.marker-dot { stroke: var(--ink); stroke-width: 2; fill: var(--accent); fill-opacity: 1; }
+.marker-dot { stroke: var(--ink); stroke-width: 2; fill-opacity: 1; }
 .here-dot { fill: var(--here); fill-opacity: 1; stroke: #ffffff; stroke-width: 3; }
 .here-accuracy { fill: var(--here); fill-opacity: 0.12; stroke: var(--here); stroke-opacity: 0.5; stroke-width: 1; }
 .map-locate {
@@ -367,7 +367,23 @@ textarea { resize: vertical; }
 .map-legend li { display: flex; align-items: center; gap: 6px; }
 .legend-dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--ink); }
 .legend-dot.here { background: var(--here); border-color: var(--here); }
-.legend-dot.service { background: var(--accent); }
+.chips.map-filter {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  margin: 0 -16px;
+  padding: 2px 16px 4px;
+  scrollbar-width: none;
+}
+.map-filter::-webkit-scrollbar { display: none; }
+.map-filter .chip { flex: none; }
+.cat { display: inline-flex; align-items: center; gap: 6px; }
+.cat-dot {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1.5px var(--surface);
+}
 .popup { display: flex; flex-direction: column; gap: 4px; font-size: 14px; }
 .popup .btn { min-height: 40px; margin-top: 6px; padding: 6px 12px; }
 

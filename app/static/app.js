@@ -60,6 +60,7 @@
     signupMethod: "email",
     searchFrom: "home",
     detailFrom: "search",
+    mapCategory: "",
     captionsFrom: "contact",
     here: null,          // { lat, lon, accuracy } once the browser reports a position
     locStatus: "idle",   // idle | pending | ok | denied | unavailable
@@ -68,6 +69,16 @@
     hereAccuracy: null,
     mapCentered: false,
   };
+
+  // Pin colours per service type. Unlisted types take the next fallback colour.
+  var CATEGORY_COLORS = {
+    "Food bank": "#2b8a3e",
+    "Warm space": "#f08c00",
+    "Public toilet": "#1971c2",
+    "Period": "#ae3ec9",
+    "nhs": "#0c8599",
+  };
+  var FALLBACK_COLORS = ["#5c940d", "#862e9c", "#495057", "#a61e4d"];
 
   var $ = function (sel) { return document.querySelector(sel); };
   var $$ = function (sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); };
@@ -285,6 +296,7 @@
     state.services = res[0];
     state.categories = res[1];
     renderChips();
+    renderMapFilter();
     renderList();
   });
 
@@ -454,7 +466,7 @@
         '<span class="card-name">' + esc(s.name) + '</span>' +
         '<span class="card-meta">' +
           (km[s.id] !== null ? '<span class="card-distance">' + formatDistance(km[s.id]) + '</span>' : "") +
-          '<span>' + esc(s.category) + '</span>' +
+          categoryLabelHtml(s.category) +
           '<span class="tag">' + (s.free ? "Free" : "May cost money") + '</span>' +
         '</span>';
       btn.addEventListener("click", function () {
@@ -492,10 +504,12 @@
       var marker = L.circleMarker([s.location.lat, s.location.lon], {
         radius: 9,
         className: "marker-dot",
-      }).addTo(state.map);
+        fillColor: colorFor(s.category),
+      });
       marker.bindPopup(function () { return popupFor(s); });
       state.markers[s.id] = marker;
     });
+    applyMapFilter(false);
 
     var LocateControl = L.Control.extend({
       options: { position: "topright" },
@@ -524,7 +538,7 @@
         className: "here-accuracy",
         interactive: false,
       }).addTo(state.map);
-      state.hereMarker = L.circleMarker(ll, { radius: 8, className: "here-dot" })
+      state.hereMarker = L.circleMarker(ll, { radius: 11, className: "here-dot" })
         .bindPopup("You are here")
         .addTo(state.map);
     } else {
@@ -545,7 +559,7 @@
     el.innerHTML =
       "<strong>" + esc(s.name) + "</strong>" +
       (km !== null ? "<span>" + formatDistance(km) + "</span>" : "") +
-      "<span>" + esc(s.category) + "</span>" +
+      categoryLabelHtml(s.category) +
       "<span>" + esc(s.address.street) + ", " + esc(s.address.postcode) + "</span>";
     var btn = document.createElement("button");
     btn.type = "button";
@@ -559,6 +573,63 @@
     return el;
   }
 
+  function colorFor(cat) {
+    if (CATEGORY_COLORS[cat]) return CATEGORY_COLORS[cat];
+    var others = state.categories.filter(function (c) { return !CATEGORY_COLORS[c]; });
+    var i = Math.max(0, others.indexOf(cat));
+    return FALLBACK_COLORS[i % FALLBACK_COLORS.length];
+  }
+
+  function categoryLabelHtml(cat) {
+    return '<span class="cat"><i class="cat-dot" style="background:' + colorFor(cat) + '"></i>' +
+      esc(cat) + "</span>";
+  }
+
+  // Map filter: the user picks one type of service, or All.
+  function renderMapFilter() {
+    var bar = $("#map-filter");
+    bar.innerHTML = "";
+    [""].concat(state.categories).forEach(function (c) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "chip";
+      b.dataset.cat = c;
+      b.setAttribute("aria-pressed", state.mapCategory === c ? "true" : "false");
+      b.innerHTML = c === "" ? "All" : categoryLabelHtml(c);
+      b.addEventListener("click", function () { setMapCategory(c); });
+      bar.appendChild(b);
+    });
+  }
+
+  function setMapCategory(cat) {
+    state.mapCategory = cat;
+    $$("#map-filter .chip").forEach(function (b) {
+      b.setAttribute("aria-pressed", b.dataset.cat === cat ? "true" : "false");
+    });
+    applyMapFilter(cat !== "");
+  }
+
+  function applyMapFilter(zoomToResults) {
+    if (!state.map) return;
+    var shown = [];
+    state.services.forEach(function (s) {
+      var marker = state.markers[s.id];
+      if (!marker) return;
+      var visible = !state.mapCategory || s.category === state.mapCategory;
+      if (visible) {
+        shown.push(marker.getLatLng());
+        if (!state.map.hasLayer(marker)) marker.addTo(state.map);
+      } else if (state.map.hasLayer(marker)) {
+        state.map.removeLayer(marker);
+      }
+    });
+    $("#map-count").textContent = shown.length === 1 ? "1 place shown" : shown.length + " places shown";
+    if (state.hereMarker) state.hereMarker.bringToFront(); // keep "you" above re-added pins
+    if (zoomToResults && shown.length) {
+      state.map.fitBounds(L.latLngBounds(shown), { padding: [30, 30], maxZoom: 15 });
+    }
+  }
+
   function showMap(focusId) {
     dataReady.then(function () {
       if (!state.map) buildMap();
@@ -566,6 +637,7 @@
       setTimeout(function () {
         state.map.invalidateSize();
         var marker = focusId && state.markers[focusId];
+        if (marker && !state.map.hasLayer(marker)) setMapCategory("");
         if (marker) {
           state.mapCentered = true;
           state.map.setView(marker.getLatLng(), 15);
