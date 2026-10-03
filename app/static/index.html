@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edinburgh Easy Services</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="demo-wrap">
+    <header class="demo-bar" aria-label="Demo controls">
+      <span class="demo-label">Phone demo</span>
+      <div class="demo-controls" role="group" aria-label="Accessibility controls">
+        <span class="demo-hint">Accessibility:</span>
+        <button type="button" class="a11y-btn" id="font-dec" aria-label="Decrease text size">A-</button>
+        <button type="button" class="a11y-btn" id="font-inc" aria-label="Increase text size">A+</button>
+        <button type="button" class="a11y-btn" id="contrast-toggle" aria-pressed="false">High contrast</button>
+      </div>
+    </header>
+
+    <div class="phone" role="region" aria-label="Phone screen">
+      <div class="phone-notch" aria-hidden="true"></div>
+      <div class="screen">
+        <a class="skip-link" href="#main">Skip to main content</a>
+
+        <header class="app-header">
+          <h1>Edinburgh Easy Services</h1>
+          <p class="tagline">Free and hard-to-find help, in plain words.</p>
+          <div class="app-a11y" role="group" aria-label="Text size and contrast">
+            <button type="button" class="a11y-btn" id="app-font-dec" aria-label="Decrease text size">A-</button>
+            <button type="button" class="a11y-btn" id="app-font-inc" aria-label="Increase text size">A+</button>
+            <button type="button" class="a11y-btn" id="app-contrast" aria-pressed="false">High contrast</button>
+          </div>
+        </header>
+
+        <nav class="tabs" aria-label="App sections">
+          <button type="button" class="tab" data-view="home" aria-current="true">Home</button>
+          <button type="button" class="tab" data-view="map" aria-current="false">Map</button>
+          <button type="button" class="tab" data-view="translate" aria-current="false">Plain words</button>
+        </nav>
+
+        <main id="main" class="content">
+
+          <!-- HOME -->
+          <section id="view-home" class="view" aria-label="Service list">
+            <div class="filters">
+              <label class="field">
+                <span>Search</span>
+                <input type="search" id="search" placeholder="e.g. food, warm, wifi">
+              </label>
+              <label class="field">
+                <span>Category</span>
+                <select id="category">
+                  <option value="">All categories</option>
+                </select>
+              </label>
+            </div>
+            <ul id="service-list" class="service-list" aria-live="polite"></ul>
+            <p id="list-empty" class="empty" hidden>No services found. Try a different search.</p>
+          </section>
+
+          <!-- MAP -->
+          <section id="view-map" class="view" aria-label="Map of services" hidden>
+            <div id="map" class="map" aria-label="Map showing service locations"></div>
+            <ul id="map-legend" class="map-legend" aria-label="Map legend"></ul>
+          </section>
+
+          <!-- TRANSLATE -->
+          <section id="view-translate" class="view" aria-label="Translate to plain words" hidden>
+            <h2>Write it in plain words</h2>
+            <p class="muted">Paste any text and get a plain-language version. This uses the model on the backend.</p>
+            <label class="field">
+              <span>Text to translate</span>
+              <textarea id="translate-in" rows="6"></textarea>
+            </label>
+            <button type="button" class="btn primary" id="translate-btn">Translate</button>
+            <p id="translate-status" class="status" aria-live="polite"></p>
+            <div id="translate-out" class="out-card" hidden></div>
+          </section>
+
+          <!-- DETAIL -->
+          <section id="view-detail" class="view" aria-label="Service details" hidden></section>
+
+        </main>
+
+        <footer class="app-footer">
+          <p>Data from public sources. Details may change — please check before you go.</p>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
