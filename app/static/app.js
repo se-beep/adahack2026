@@ -73,12 +73,12 @@
   // Pin colours per service type. Unlisted types take the next fallback colour.
   var CATEGORY_COLORS = {
     "Food bank": "#c6ff5e",
-    "Warm space": "#ffd84a",
+    "Warm space": "#ffb347",
     "Public toilet": "#5ee6e6",
     "Period": "#ff5ec8",
-    "nhs": "#7b9bff",
+    "NHS": "#a78bfa",
   };
-  var FALLBACK_COLORS = ["#19b5c9", "#ff9f43", "#ffffff", "#b197fc"];
+  var FALLBACK_COLORS = ["#ffd84a", "#19b5c9", "#ffffff"];
 
   var $ = function (sel) { return document.querySelector(sel); };
   var $$ = function (sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); };
@@ -511,7 +511,7 @@
       marker.bindPopup(function () { return popupFor(s); });
       state.markers[s.id] = marker;
     });
-    applyMapFilter(false);
+    applyMapFilter();
 
     var LocateControl = L.Control.extend({
       options: { position: "topright" },
@@ -591,7 +591,7 @@
   }
 
   function categoryLabelHtml(cat) {
-    return '<span class="cat"><svg class="cat-star" viewBox="0 0 100 100" aria-hidden="true" style="--c:' +
+    return '<span class="cat"><svg class="cat-star" viewBox="0 0 100 100" aria-hidden="true" style="stroke:' +
       colorFor(cat) + '"><use href="#doodle-star"/></svg>' + esc(cat) + "</span>";
   }
 
@@ -601,8 +601,10 @@
     if (!starIcons[color]) {
       starIcons[color] = L.divIcon({
         className: "star-marker",
-        html: '<svg viewBox="0 0 100 100" style="color:' + color + '">' +
-          '<use class="halo" href="#doodle-star"/><use class="ink" href="#doodle-star"/></svg>',
+        html: '<svg viewBox="0 0 100 100">' +
+          '<use href="#doodle-star" style="stroke:#07043f;stroke-width:18;fill:none"/>' +
+          '<use href="#doodle-star" style="stroke:' + color + ';stroke-width:9;fill:' + color +
+          ';fill-opacity:0.22"/></svg>',
         iconSize: [30, 30],
         iconAnchor: [15, 15],
         popupAnchor: [0, -12],
@@ -632,27 +634,25 @@
     $$("#map-filter .chip").forEach(function (b) {
       b.setAttribute("aria-pressed", b.dataset.cat === cat ? "true" : "false");
     });
-    applyMapFilter(cat !== "");
+    applyMapFilter();
   }
 
-  function applyMapFilter(zoomToResults) {
+  // Shows or hides pins only; the map keeps the user's current zoom and position.
+  function applyMapFilter() {
     if (!state.map) return;
-    var shown = [];
+    var shown = 0;
     state.services.forEach(function (s) {
       var marker = state.markers[s.id];
       if (!marker) return;
       var visible = !state.mapCategory || s.category === state.mapCategory;
       if (visible) {
-        shown.push(marker.getLatLng());
+        shown++;
         if (!state.map.hasLayer(marker)) marker.addTo(state.map);
       } else if (state.map.hasLayer(marker)) {
         state.map.removeLayer(marker);
       }
     });
-    $("#map-count").textContent = shown.length === 1 ? "1 place shown" : shown.length + " places shown";
-    if (zoomToResults && shown.length) {
-      state.map.fitBounds(L.latLngBounds(shown), { padding: [30, 30], maxZoom: 15 });
-    }
+    $("#map-count").textContent = shown === 1 ? "1 place shown" : shown + " places shown";
   }
 
   function showMap(focusId) {
