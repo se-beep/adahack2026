@@ -1,0 +1,621 @@
+id,n,c,a,postcode,lat,lng,days,open,close,dt,acc,t,g,org,source,student_only,registration,institution,tags,description_original,description_plain,phone,website,free
+n1,"A&E, Royal Infirmary of Edinburgh",nhs,Little France,EH16 4SA,55.921754,-3.13594,"0,1,2,3,4,5,6",00:00,23:59,Open 24 hours,Emergency only,Life-threatening emergencies (adults). Call 999 if you cannot get there safely.,0,NHS Lothian,NHS Lothian,0,0,all,nhs;emergency,"A&E, Royal Infirmary of Edinburgh.
+Emergency only
+Open 24 hours","A&E, Royal Infirmary of Edinburgh.
+Emergency only
+Open 24 hours",,,1
+gp_78359,Almond Group Practice,nhs,50 The Glebe,EH29 9AS,55.955196,-3.405334,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Almond Group Practice.
+GP practice - register or ask about access
+See practice for hours","Almond Group Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70499,Annandale Medical Practice,nhs,26 Huntingdon Place,EH7 4AT,55.96082,-3.18389,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Annandale Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Annandale Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_78330,Ashgrove Group Practice,nhs,Ashgrove,EH47 7LL,,,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Ashgrove Group Practice.
+GP practice - register or ask about access
+See practice for hours","Ashgrove Group Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70272,Bangholm Medical Centre,nhs,,EH5 3AH,55.972754,-3.201351,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Bangholm Medical Centre.
+GP practice - register or ask about access
+See practice for hours","Bangholm Medical Centre.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_78241,Barbauchlaw Medical Practice,nhs,Armadale,EH48 3QB,55.899581,-3.699129,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Barbauchlaw Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Barbauchlaw Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_78397,Barclay Medical Practice,nhs,Livingston,EH54 8PY,55.902199,-3.547658,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Barclay Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Barclay Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_71434,Barclay Medical Practice East Craigs,nhs,East Craigs,EH12 8XP,55.95136,-3.303806,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Barclay Medical Practice East Craigs.
+GP practice - register or ask about access
+See practice for hours","Barclay Medical Practice East Craigs.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_71523,Barclay Medical Practice Leith,nhs,Edinburgh,EH6 6TL,55.974689,-3.176895,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Barclay Medical Practice Leith.
+GP practice - register or ask about access
+See practice for hours","Barclay Medical Practice Leith.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_78414,Barclay Medical Practice-Fauldhouse,nhs,Lanrigg Road,EH47 9JD,55.829536,-3.704184,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Barclay Medical Practice-Fauldhouse.
+GP practice - register or ask about access
+See practice for hours","Barclay Medical Practice-Fauldhouse.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70658,Baronscourt Surgery,nhs,Edinburgh,EH8 7RX,55.954551,-3.14081,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Baronscourt Surgery.
+GP practice - register or ask about access
+See practice for hours","Baronscourt Surgery.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70535,Blackhall Medical Centre,nhs,Edinburgh,EH4 3TH,55.959895,-3.256503,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Blackhall Medical Centre.
+GP practice - register or ask about access
+See practice for hours","Blackhall Medical Centre.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_71379,Boroughloch Medical Practice,nhs,102 St Leonards Street,EH8 9RD,55.94113,-3.176725,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Boroughloch Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Boroughloch Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70893,Braefoot Medical Practice,nhs,4 Nether Liberton Lane,EH16 5TY,55.925101,-3.166269,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Braefoot Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Braefoot Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70075,Braids Medical Practice,nhs,Edinburgh,EH10 6QT,55.906546,-3.210067,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Braids Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Braids Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70268,Brunton Place Surgery,nhs,Edinburgh,EH7 5EG,55.957862,-3.174686,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Brunton Place Surgery.
+GP practice - register or ask about access
+See practice for hours","Brunton Place Surgery.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70323,Bruntsfield Medical Practice,nhs,Edinburgh,EH10 4EY,55.93568,-3.207087,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Bruntsfield Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Bruntsfield Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_78010,Carmondean Medical Group,nhs,Livingston,EH54 8PY,55.902199,-3.547658,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Carmondean Medical Group.
+GP practice - register or ask about access
+See practice for hours","Carmondean Medical Group.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_71171,Challenging Behaviour General Practice,nhs,Morningside Place,EH10 5HF,55.927192,-3.215865,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Challenging Behaviour General Practice.
+GP practice - register or ask about access
+See practice for hours","Challenging Behaviour General Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70131,Colinton Surgery,nhs,Edinburgh,EH13 0LB,55.908895,-3.25274,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Colinton Surgery.
+GP practice - register or ask about access
+See practice for hours","Colinton Surgery.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70610,Craiglockhart Medical Group,nhs,165 Colinton Mains Drive,EH13 9AF,55.911031,-3.237003,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Craiglockhart Medical Group.
+GP practice - register or ask about access
+See practice for hours","Craiglockhart Medical Group.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70215,Craigmillar Medical Group,nhs,106 Niddrie Mains Road,EH16 4DT,55.932592,-3.135826,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Craigmillar Medical Group.
+GP practice - register or ask about access
+See practice for hours","Craigmillar Medical Group.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_71129,Cramond Medical Practice,nhs,Edinburgh,EH4 6NS,55.977167,-3.29953,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Cramond Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Cramond Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70573,Crewe Medical Centre,nhs,Edinburgh,EH5 2LY,55.975213,-3.238043,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Crewe Medical Centre.
+GP practice - register or ask about access
+See practice for hours","Crewe Medical Centre.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_76180,Cromwell Harbour Medical Practice,nhs,Queens Road,EH42 1EE,55.999546,-2.512887,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Cromwell Harbour Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Cromwell Harbour Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_77055,Dalhousie Medical Practice,nhs,109-111 High Street,EH19 2ET,55.87845,-3.107775,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Dalhousie Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Dalhousie Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_77197,Dalkeith Medical Practice,nhs,24-26 St Andrew Street,EH22 1AP,55.894233,-3.067561,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Dalkeith Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Dalkeith Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70470,Dalkeith Road Medical Practice,nhs,102 St Leonards Street,EH8 9RD,55.94113,-3.176725,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Dalkeith Road Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Dalkeith Road Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70709,Davidson'S Mains Medical Centre,nhs,Davidsons Mains,EH4 5BP,55.963666,-3.273318,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Davidson'S Mains Medical Centre.
+GP practice - register or ask about access
+See practice for hours","Davidson'S Mains Medical Centre.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_78260,Dedridge Medical Group,nhs,"Nigel Rise, Dedridge",EH54 6QQ,55.879781,-3.5084,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Dedridge Medical Group.
+GP practice - register or ask about access
+See practice for hours","Dedridge Medical Group.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70639,Dr A Comiskey And Partners,nhs,4 Nether Liberton Lane,EH16 5TY,55.925101,-3.166269,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Dr A Comiskey And Partners.
+GP practice - register or ask about access
+See practice for hours","Dr A Comiskey And Partners.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70408,Dr Thyne & Partners,nhs,1 India Place,EH3 6EH,55.957193,-3.20774,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Dr Thyne & Partners.
+GP practice - register or ask about access
+See practice for hours","Dr Thyne & Partners.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70605,Durham Road Medical Group,nhs,Edinburgh,EH15 1NY,55.947553,-3.12006,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Durham Road Medical Group.
+GP practice - register or ask about access
+See practice for hours","Durham Road Medical Group.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_78024,East Calder Medical Practice,nhs,147 Main Street,EH53 0EW,55.895629,-3.462493,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"East Calder Medical Practice.
+GP practice - register or ask about access
+See practice for hours","East Calder Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_76194,East Linton Surgery,nhs,Station Road,EH40 3DP,55.984435,-2.65666,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"East Linton Surgery.
+GP practice - register or ask about access
+See practice for hours","East Linton Surgery.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_77036,Eastfield Medical Practice,nhs,Penicuik,EH26 8EZ,55.836566,-3.21741,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Eastfield Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Eastfield Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70963,Edinburgh Access Practice,nhs,6 South Gray's Close,EH1 1NA,55.948992,-3.184298,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Edinburgh Access Practice.
+GP practice - register or ask about access
+See practice for hours","Edinburgh Access Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_78062,Ferguson Medical Practice,nhs,189a West Main Street,EH52 5LH,55.932614,-3.484362,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Ferguson Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Ferguson Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70164,Ferniehill Surgery,nhs,Edinburgh,EH17 7AB,55.907298,-3.133917,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Ferniehill Surgery.
+GP practice - register or ask about access
+See practice for hours","Ferniehill Surgery.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_71097,Firrhill Medical Centre,nhs,165 Colinton Mains Drive,EH13 9AF,55.911031,-3.237003,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Firrhill Medical Centre.
+GP practice - register or ask about access
+See practice for hours","Firrhill Medical Centre.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_71222,Gilmore Medical Practice,nhs,Ponton Street,EH3 9QQ,55.943998,-3.206401,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Gilmore Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Gilmore Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_71472,Gracemount Medical Group,nhs,Edinburgh,EH16 6RN,55.903832,-3.156816,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Gracemount Medical Group.
+GP practice - register or ask about access
+See practice for hours","Gracemount Medical Group.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70412,Grange Medical Group,nhs,Edinburgh,EH9 1AG,55.935094,-3.19335,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Grange Medical Group.
+GP practice - register or ask about access
+See practice for hours","Grange Medical Group.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_76029,Gullane Medical Practice,nhs,Hamilton Road,EH31 2HP,56.035085,-2.826799,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Gullane Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Gullane Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_71449,Hermitage Medical Practice,nhs,133 Grange Loan,EH9 2HL,55.928374,-3.196904,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Hermitage Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Hermitage Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_78255,Howden Health Centre,nhs,Livingston,EH54 6TP,55.892804,-3.522833,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Howden Health Centre.
+GP practice - register or ask about access
+See practice for hours","Howden Health Centre.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70291,Inchpark Surgery,nhs,Edinburgh,EH16 5QU,55.921201,-3.159639,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Inchpark Surgery.
+GP practice - register or ask about access
+See practice for hours","Inchpark Surgery.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_76141,Inveresk Medical Practice,nhs,Inveresk Road,EH21 7BP,55.938647,-3.053014,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Inveresk Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Inveresk Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_78128,Kingsgate Medical Practice,nhs,Whitburn Road,EH48 2SS,55.897719,-3.647037,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Kingsgate Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Kingsgate Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_26208,Kinneil Medical Practice,nhs,Dean Road,EH51 0DQ,56.012033,-3.613676,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Kinneil Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Kinneil Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70361,Ladywell Medical Centre (East),nhs,Edinburgh,EH12 7UN,55.940752,-3.288128,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Ladywell Medical Centre (East).
+GP practice - register or ask about access
+See practice for hours","Ladywell Medical Centre (East).
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70220,Ladywell Medical Centre (West),nhs,Edinburgh,EH12 7TB,55.940228,-3.290175,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Ladywell Medical Centre (West).
+GP practice - register or ask about access
+See practice for hours","Ladywell Medical Centre (West).
+GP practice - register or ask about access
+See practice for hours",,,
+gp_76071,Lammermuir Medical Practice,nhs,Newton Port,EH41 3NF,55.956908,-2.77681,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Lammermuir Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Lammermuir Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_76161,Lauderdale Medical Practice,nhs,Queens Road,EH42 1EE,55.999546,-2.512887,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Lauderdale Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Lauderdale Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_71114,Leith Mount Surgery,nhs,Edinburgh,EH6 4EG,55.97853,-3.182973,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Leith Mount Surgery.
+GP practice - register or ask about access
+See practice for hours","Leith Mount Surgery.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70179,Leith Surgery,nhs,Edinburgh,EH6 8HQ,55.97027,-3.171009,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Leith Surgery.
+GP practice - register or ask about access
+See practice for hours","Leith Surgery.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70107,Leven Medical Practice,nhs,Ponton Street,EH3 9QQ,55.943998,-3.206401,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Leven Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Leven Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70376,Liberton Medical Group,nhs,Edinburgh,EH16 6JT,55.909272,-3.163073,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Liberton Medical Group.
+GP practice - register or ask about access
+See practice for hours","Liberton Medical Group.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_78113,Linden Medical Practice,nhs,189a West Main Street,EH52 5LH,55.932614,-3.484362,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Linden Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Linden Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_71398,Links Medical Centre,nhs,Edinburgh,EH6 8BW,55.969166,-3.164247,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Links Medical Centre.
+GP practice - register or ask about access
+See practice for hours","Links Medical Centre.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_78166,Linlithgow Group Medical Practice,nhs,288 High Street,EH49 7ER,55.976168,-3.607615,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Linlithgow Group Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Linlithgow Group Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_77286,Loanhead Medical Practice,nhs,George Avenue,EH20 9LA,55.878875,-3.154428,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Loanhead Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Loanhead Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70381,Mackenzie Medical Centre,nhs,Edinburgh,EH8 9DX,55.945438,-3.183885,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Mackenzie Medical Centre.
+GP practice - register or ask about access
+See practice for hours","Mackenzie Medical Centre.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70451,Meadows Medical Practice,nhs,Edinburgh,EH3 9HW,55.942587,-3.200882,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Meadows Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Meadows Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70427,Milton Surgery,nhs,Edinburgh,EH15 3LL,55.940334,-3.116537,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Milton Surgery.
+GP practice - register or ask about access
+See practice for hours","Milton Surgery.
+GP practice - register or ask about access
+See practice for hours",,,
+n3,Minor Injuries Clinic - Western General,nhs,Crewe Toll,EH4 2XU,55.961802,-3.234908,"0,1,2,3,4,5,6",08:00,21:00,Daily 08:00-21:00 (last book-in 20:30),Walk-in / phone first 0131 537 3481,"Cuts, sprains, minor burns, simple fractures for ages 1+. Phone first to check.",0,NHS Lothian,NHS Lothian,0,0,all,nhs;miu,"Minor Injuries Clinic - Western General.
+Walk-in / phone first 0131 537 3481
+Daily 08:00-21:00 (last book-in 20:30)","Minor Injuries Clinic - Western General.
+Walk-in / phone first 0131 537 3481
+Daily 08:00-21:00 (last book-in 20:30)",,,1
+n2,Minor Injuries Unit - Royal Infirmary,nhs,Little France,EH16 4SA,55.921754,-3.13594,"0,1,2,3,4,5,6",08:00,23:59,Daily 08:00-00:00 (last book-in 23:30),Walk-in / self-refer,"Cuts, sprains, minor burns and eye problems. Quicker than A&E.",0,NHS Lothian,NHS Lothian,0,0,all,nhs;miu,"Minor Injuries Unit - Royal Infirmary.
+Walk-in / self-refer
+Daily 08:00-00:00 (last book-in 23:30)","Minor Injuries Unit - Royal Infirmary.
+Walk-in / self-refer
+Daily 08:00-00:00 (last book-in 23:30)",,,1
+gp_70790,Morningside Medical Practice,nhs,Edinburgh,EH10 5ER,55.930127,-3.21162,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Morningside Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Morningside Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70662,Muirhouse Medical Group,nhs,1 Muirhouse Avenue,EH4 4PL,55.970143,-3.254208,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Muirhouse Medical Group.
+GP practice - register or ask about access
+See practice for hours","Muirhouse Medical Group.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_78429,Murieston Medical Practice Llp,nhs,Murieston South,EH54 9JZ,55.87029,-3.507105,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Murieston Medical Practice Llp.
+GP practice - register or ask about access
+See practice for hours","Murieston Medical Practice Llp.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_71025,Murrayfield Medical Centre,nhs,Edinburgh,EH12 5SS,55.942996,-3.256292,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Murrayfield Medical Centre.
+GP practice - register or ask about access
+See practice for hours","Murrayfield Medical Centre.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70501,Murrayfield Medical Practice,nhs,Edinburgh,EH12 5QX,55.943523,-3.245998,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Murrayfield Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Murrayfield Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_77106,Newbattle Medical Practice,nhs,Mayfield,EH22 4AA,55.867559,-3.049347,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Newbattle Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Newbattle Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_77159,Newbyres Medical Group,nhs,Gorebridge,EH23 4TP,55.843112,-3.049055,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Newbyres Medical Group.
+GP practice - register or ask about access
+See practice for hours","Newbyres Medical Group.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_78077,Newland Medical Practice,nhs,Whitburn Road,EH48 2SS,55.897719,-3.647037,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Newland Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Newland Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70198,Niddrie Medical Practice,nhs,106 Niddrie Mains Road,EH16 4DT,55.932592,-3.135826,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Niddrie Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Niddrie Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_76137,North Berwick Group Practice,nhs,54 St. Baldred's Road,EH39 4PU,56.055441,-2.716764,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"North Berwick Group Practice.
+GP practice - register or ask about access
+See practice for hours","North Berwick Group Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_76211,Ormiston Medical Practice,nhs,Ormiston,EH35 5AB,55.910583,-2.950717,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Ormiston Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Ormiston Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_71487,Parkgrove Medical Practice,nhs,Edinburgh,EH4 7NX,55.959227,-3.28802,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Parkgrove Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Parkgrove Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_77125,Pathhead Medical Practice,nhs,210 Main Street,EH37 5PP,55.862496,-2.96194,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Pathhead Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Pathhead Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_77111,Penicuik Medical Practice,nhs,37 Imrie Place,EH26 8LF,55.82818,-3.221266,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Penicuik Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Penicuik Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_76122,Prestonpans Group Practice,nhs,Preston Road,EH32 9QS,55.956392,-2.975688,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Prestonpans Group Practice.
+GP practice - register or ask about access
+See practice for hours","Prestonpans Group Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_77074,Quarryfoot Practice,nhs,109-111 High Street,EH19 2ET,55.87845,-3.107775,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Quarryfoot Practice.
+GP practice - register or ask about access
+See practice for hours","Quarryfoot Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_71420,Ratho Medical Practice,nhs,Ratho,EH28 8RH,55.920508,-3.387339,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Ratho Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Ratho Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70569,Restalrig Park Medical Centre,nhs,Edinburgh,EH7 6UJ,55.96461,-3.156709,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Restalrig Park Medical Centre.
+GP practice - register or ask about access
+See practice for hours","Restalrig Park Medical Centre.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70925,Riccarton General Practice,nhs,Riccarton,EH14 4AS,55.90938,-3.320681,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Riccarton General Practice.
+GP practice - register or ask about access
+See practice for hours","Riccarton General Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_76033,Riverside Medical Practice Llp,nhs,Inveresk Road,EH21 7BP,55.938647,-3.053014,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Riverside Medical Practice Llp.
+GP practice - register or ask about access
+See practice for hours","Riverside Medical Practice Llp.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_77093,Roslin Medical Practice,nhs,Roslin,EH25 9NT,55.856776,-3.175707,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Roslin Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Roslin Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70911,Sighthill Green Medical Practice,nhs,Calder Road,EH11 4AU,55.923468,-3.286017,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Sighthill Green Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Sighthill Green Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70906,Sighthill Red Medical Practice,nhs,Calder Road,EH11 4AU,55.923468,-3.286017,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Sighthill Red Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Sighthill Red Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_78132,Simpson Medical Group,nhs,Whitburn Road,EH48 2SS,55.897719,-3.647037,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Simpson Medical Group.
+GP practice - register or ask about access
+See practice for hours","Simpson Medical Group.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70997,Slateford Medical Practice,nhs,Edinburgh,EH14 1NQ,55.93416,-3.238846,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Slateford Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Slateford Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_78171,South Queensferry Medical Practice,nhs,South Queensferry,EH30 9HA,55.989844,-3.399057,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"South Queensferry Medical Practice.
+GP practice - register or ask about access
+See practice for hours","South Queensferry Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70126,Southfield Medical Practice,nhs,Edinburgh,EH15 3LL,55.940334,-3.116537,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Southfield Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Southfield Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_71082,Springwell Medical Group,nhs,39 Ardmillan Terrace,EH11 2JL,55.938612,-3.226773,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Springwell Medical Group.
+GP practice - register or ask about access
+See practice for hours","Springwell Medical Group.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70841,St Leonard'S Medical Centre,nhs,Edinburgh,EH8 9RU,55.944563,-3.181441,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"St Leonard'S Medical Centre.
+GP practice - register or ask about access
+See practice for hours","St Leonard'S Medical Centre.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_16121,St Ronan'S Practice,nhs,Innerleithen,EH44 6QE,55.616011,-3.066985,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"St Ronan'S Practice.
+GP practice - register or ask about access
+See practice for hours","St Ronan'S Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70785,St Triduana'S Medical Practice,nhs,Edinburgh,EH7 6RU,55.956285,-3.133045,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"St Triduana'S Medical Practice.
+GP practice - register or ask about access
+See practice for hours","St Triduana'S Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_77271,Strathesk Medical Group,nhs,109-111 High Street,EH19 2ET,55.87845,-3.107775,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Strathesk Medical Group.
+GP practice - register or ask about access
+See practice for hours","Strathesk Medical Group.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70747,Summerside Medical Practice,nhs,29b Summerside Place,EH6 4NY,55.974938,-3.187446,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Summerside Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Summerside Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_78311,The Craigshill Partnership,nhs,Craigshill Road,EH54 5DY,55.897698,-3.494461,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"The Craigshill Partnership.
+GP practice - register or ask about access
+See practice for hours","The Craigshill Partnership.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70094,The Green Practice,nhs,1 India Place,EH3 6EH,55.957193,-3.20774,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"The Green Practice.
+GP practice - register or ask about access
+See practice for hours","The Green Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_71326,The Group Practice - Eyre,nhs,Edinburgh,EH3 5EU,55.961664,-3.198925,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"The Group Practice - Eyre.
+GP practice - register or ask about access
+See practice for hours","The Group Practice - Eyre.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_76052,The Harbours Medical Practice Llp,nhs,Avenue Road,EH32 0JU,55.9691,-2.960451,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"The Harbours Medical Practice Llp.
+GP practice - register or ask about access
+See practice for hours","The Harbours Medical Practice Llp.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70521,The Hopetoun Practice,nhs,26 Huntingdon Place,EH7 4AT,55.96082,-3.18389,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"The Hopetoun Practice.
+GP practice - register or ask about access
+See practice for hours","The Hopetoun Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70234,The Long House Surgery,nhs,73 East Trinity Road,EH5 3EL,55.976203,-3.20149,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"The Long House Surgery.
+GP practice - register or ask about access
+See practice for hours","The Long House Surgery.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_16160,The Neidpath Practice,nhs,Neidpath Road,EH45 8JG,55.651475,-3.197832,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"The Neidpath Practice.
+GP practice - register or ask about access
+See practice for hours","The Neidpath Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_76103,The Orchard Medical Practice,nhs,Newton Port,EH41 3NF,55.956908,-2.77681,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"The Orchard Medical Practice.
+GP practice - register or ask about access
+See practice for hours","The Orchard Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70930,The Pentlands Medical Practice,nhs,44 Pentland View,EH14 5QB,55.895605,-3.314872,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"The Pentlands Medical Practice.
+GP practice - register or ask about access
+See practice for hours","The Pentlands Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_25084,The Richmond Practice,nhs,Dean Road,EH51 0DQ,56.012033,-3.613676,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"The Richmond Practice.
+GP practice - register or ask about access
+See practice for hours","The Richmond Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70588,The Southern Medical Group,nhs,Edinburgh,EH17 7PR,55.91653,-3.151787,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"The Southern Medical Group.
+GP practice - register or ask about access
+See practice for hours","The Southern Medical Group.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_16211,The Tweed Practice,nhs,Neidpath Road,EH45 8JG,55.651475,-3.197832,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"The Tweed Practice.
+GP practice - register or ask about access
+See practice for hours","The Tweed Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70982,The Victoria Practice,nhs,12 Junction Place,EH6 5JA,55.971644,-3.174864,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"The Victoria Practice.
+GP practice - register or ask about access
+See practice for hours","The Victoria Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_78306,The Wood Medical Practice,nhs,189a West Main Street,EH52 5LH,55.932614,-3.484362,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"The Wood Medical Practice.
+GP practice - register or ask about access
+See practice for hours","The Wood Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_76226,Tranent Medical Practice Llp,nhs,Loch Road,EH33 2JX,55.942474,-2.951562,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Tranent Medical Practice Llp.
+GP practice - register or ask about access
+See practice for hours","Tranent Medical Practice Llp.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_76000,Tyne Medical Practice,nhs,Newton Port,EH41 3NF,55.956908,-2.77681,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Tyne Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Tyne Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70592,University Health Service,nhs,Edinburgh,EH8 9AL,55.945981,-3.188129,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"University Health Service.
+GP practice - register or ask about access
+See practice for hours","University Health Service.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_78147,West Calder Medical Practice,nhs,65 West End,EH55 8EJ,55.849736,-3.578317,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"West Calder Medical Practice.
+GP practice - register or ask about access
+See practice for hours","West Calder Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70319,West End Medical Practice,nhs,Edinburgh,EH3 7EB,55.949393,-3.216017,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"West End Medical Practice.
+GP practice - register or ask about access
+See practice for hours","West End Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_16174,West Linton Medical Practice,nhs,Deanfoot Road,EH46 7EX,55.753296,-3.353194,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"West Linton Medical Practice.
+GP practice - register or ask about access
+See practice for hours","West Linton Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70978,Wester Hailes Medical Practice,nhs,30 Harvesters Way,EH14 3JF,55.912194,-3.282348,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Wester Hailes Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Wester Hailes Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_70253,Whinpark Medical Practice,nhs,6 Saughton Road,EH11 3RA,55.927872,-3.271183,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Whinpark Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Whinpark Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_78190,Whitburn Group Medical Practice,nhs,1 Weavers Lane,EH47 0SD,55.867029,-3.689015,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Whitburn Group Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Whitburn Group Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
+gp_76086,Whitesands Medical Practice,nhs,Queens Road,EH42 1EE,55.999546,-2.512887,,,,See practice for hours,GP practice - register or ask about access,NHS GP practice.,0,NHS Scotland,opendata.nhs.scot,0,1,all,nhs;gp,"Whitesands Medical Practice.
+GP practice - register or ask about access
+See practice for hours","Whitesands Medical Practice.
+GP practice - register or ask about access
+See practice for hours",,,
