@@ -75,8 +75,8 @@
     "Food bank": "#2b8a3e",
     "Warm space": "#f08c00",
     "Public toilet": "#1971c2",
-    "Period": "#ae3ec9",
-    "nhs": "#0c8599",
+    "Period": "#c2255c",
+    "NHS": "#7048e8",
   };
   var FALLBACK_COLORS = ["#5c940d", "#862e9c", "#495057", "#a61e4d"];
 
@@ -509,7 +509,7 @@
       marker.bindPopup(function () { return popupFor(s); });
       state.markers[s.id] = marker;
     });
-    applyMapFilter(false);
+    applyMapFilter();
 
     var LocateControl = L.Control.extend({
       options: { position: "topright" },
@@ -606,28 +606,26 @@
     $$("#map-filter .chip").forEach(function (b) {
       b.setAttribute("aria-pressed", b.dataset.cat === cat ? "true" : "false");
     });
-    applyMapFilter(cat !== "");
+    applyMapFilter();
   }
 
-  function applyMapFilter(zoomToResults) {
+  // Shows or hides pins only; the map keeps the user's current zoom and position.
+  function applyMapFilter() {
     if (!state.map) return;
-    var shown = [];
+    var shown = 0;
     state.services.forEach(function (s) {
       var marker = state.markers[s.id];
       if (!marker) return;
       var visible = !state.mapCategory || s.category === state.mapCategory;
       if (visible) {
-        shown.push(marker.getLatLng());
+        shown++;
         if (!state.map.hasLayer(marker)) marker.addTo(state.map);
       } else if (state.map.hasLayer(marker)) {
         state.map.removeLayer(marker);
       }
     });
-    $("#map-count").textContent = shown.length === 1 ? "1 place shown" : shown.length + " places shown";
+    $("#map-count").textContent = shown === 1 ? "1 place shown" : shown + " places shown";
     if (state.hereMarker) state.hereMarker.bringToFront(); // keep "you" above re-added pins
-    if (zoomToResults && shown.length) {
-      state.map.fitBounds(L.latLngBounds(shown), { padding: [30, 30], maxZoom: 15 });
-    }
   }
 
   function showMap(focusId) {

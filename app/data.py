@@ -20,6 +20,9 @@ _HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEFAULT_DB = os.path.join(_HERE, "db", "services.db")
 DEFAULT_JSON = os.path.join(_HERE, "app", "data", "services.json")
 
+# Display names for categories whose stored key is not how it should read.
+CATEGORY_NAMES = {"nhs": "NHS"}
+
 
 def _synthesize_plain(row) -> str:
     parts = [row.get("access"), row.get("type"), row.get("timing_note"), row.get("org")]
@@ -43,7 +46,7 @@ def _row_to_service(row) -> Service:
     return Service(
         id=row["id"],
         name=row.get("name") or row["id"],
-        category=row.get("category") or "Other",
+        category=CATEGORY_NAMES.get(row.get("category"), row.get("category") or "Other"),
         description_original=row.get("description_original") or _synthesize_plain(row),
         description_plain=row.get("description_plain") or _synthesize_plain(row),
         address=Address(street=area, postcode=postcode),
