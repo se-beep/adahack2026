@@ -4,90 +4,162 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Edinburgh Easy Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-  <div class="demo-wrap">
-    <header class="demo-bar" aria-label="Demo controls">
-      <span class="demo-label">Phone demo</span>
-      <div class="demo-controls" role="group" aria-label="Accessibility controls">
-        <span class="demo-hint">Accessibility:</span>
-        <button type="button" class="a11y-btn" id="font-dec" aria-label="Decrease text size">A-</button>
-        <button type="button" class="a11y-btn" id="font-inc" aria-label="Increase text size">A+</button>
-        <button type="button" class="a11y-btn" id="contrast-toggle" aria-pressed="false">High contrast</button>
-      </div>
-    </header>
+  <!-- Icon set. Each symbol can later be swapped for a hand-drawn version. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-map" viewBox="0 0 24 24"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+      <symbol id="i-contact" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+      <symbol id="i-faq" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14"/><path d="M12 17.5v.01"/></symbol>
+      <symbol id="i-profile" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></symbol>
+      <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+      <symbol id="i-contrast" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18a9 9 0 0 0 0-18z" fill="currentColor"/></symbol>
+    </defs>
+  </svg>
 
+  <div class="demo-wrap">
     <div class="phone" role="region" aria-label="Phone screen">
       <div class="phone-notch" aria-hidden="true"></div>
-      <div class="screen">
+      <div class="screen" id="screen">
         <a class="skip-link" href="#main">Skip to main content</a>
 
-        <header class="app-header">
-          <h1>Edinburgh Easy Services</h1>
-          <p class="tagline">Free and hard-to-find help, in plain words.</p>
-          <div class="app-a11y" role="group" aria-label="Text size and contrast">
-            <button type="button" class="a11y-btn" id="app-font-dec" aria-label="Decrease text size">A-</button>
-            <button type="button" class="a11y-btn" id="app-font-inc" aria-label="Increase text size">A+</button>
-            <button type="button" class="a11y-btn" id="app-contrast" aria-pressed="false">High contrast</button>
+        <header class="topbar">
+          <button type="button" class="icon-btn" id="back-btn" aria-label="Back" hidden>
+            <svg class="icon"><use href="#i-back"/></svg>
+          </button>
+          <h1 class="topbar-title" id="view-title" tabindex="-1">Edinburgh Easy Services</h1>
+          <div class="topbar-tools" role="group" aria-label="Display settings">
+            <button type="button" class="icon-btn text-size-btn" id="text-size-btn">
+              <span aria-hidden="true">Aa</span>
+              <span class="size-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            </button>
+            <button type="button" class="icon-btn" id="contrast-btn" aria-pressed="false" aria-label="High contrast">
+              <svg class="icon"><use href="#i-contrast"/></svg>
+            </button>
           </div>
         </header>
 
-        <nav class="tabs" aria-label="App sections">
-          <button type="button" class="tab" data-view="home" aria-current="true">Home</button>
-          <button type="button" class="tab" data-view="map" aria-current="false">Map</button>
-          <button type="button" class="tab" data-view="translate" aria-current="false">Plain words</button>
-        </nav>
-
         <main id="main" class="content">
 
-          <!-- HOME -->
-          <section id="view-home" class="view" aria-label="Service list">
-            <div class="filters">
-              <label class="field">
-                <span>Search</span>
-                <input type="search" id="search" placeholder="e.g. food, warm, wifi">
-              </label>
-              <label class="field">
-                <span>Category</span>
-                <select id="category">
-                  <option value="">All categories</option>
-                </select>
-              </label>
+          <!-- SIGN UP -->
+          <section id="view-signup" class="view view-signup" hidden>
+            <div class="signup-intro">
+              <p class="eyebrow">Welcome</p>
+              <h2 class="display">Free help in Edinburgh, in plain words.</h2>
+              <p class="muted">Sign up with your email or phone number to get started.</p>
             </div>
-            <div id="category-chips" class="chips" role="group" aria-label="Filter by category"></div>
-            <ul id="service-list" class="service-list" aria-live="polite"></ul>
-            <p id="list-empty" class="empty" hidden>No services found. Try a different search.</p>
+
+            <form id="signup-form" class="stack" novalidate>
+              <div class="segmented" role="group" aria-label="Sign up with">
+                <button type="button" class="segment" data-method="email" aria-pressed="true">Email</button>
+                <button type="button" class="segment" data-method="phone" aria-pressed="false">Phone</button>
+              </div>
+
+              <label class="field">
+                <span id="signup-label">Email address</span>
+                <input id="signup-input" type="email" autocomplete="email" inputmode="email" placeholder="name@example.com" aria-describedby="signup-error">
+              </label>
+              <p id="signup-error" class="field-error" aria-live="polite"></p>
+
+              <button type="submit" class="btn primary block">Continue</button>
+              <button type="button" class="link-btn" id="signup-skip">Skip for now</button>
+            </form>
+          </section>
+
+          <!-- HOME -->
+          <section id="view-home" class="view view-home" hidden>
+            <nav class="home-grid" aria-label="Main menu">
+              <a class="home-btn" href="#/map"><svg class="icon"><use href="#i-map"/></svg><span>Map</span></a>
+              <a class="home-btn" href="#/search"><svg class="icon"><use href="#i-search"/></svg><span>Search</span></a>
+              <a class="home-btn" href="#/contact"><svg class="icon"><use href="#i-contact"/></svg><span>Contact</span></a>
+              <a class="home-btn" href="#/faq"><svg class="icon"><use href="#i-faq"/></svg><span>FAQ</span></a>
+              <a class="home-btn" href="#/profile"><svg class="icon"><use href="#i-profile"/></svg><span>Profile</span></a>
+            </nav>
           </section>
 
           <!-- MAP -->
-          <section id="view-map" class="view" aria-label="Map of services" hidden>
+          <section id="view-map" class="view view-map" hidden>
+            <button type="button" class="search-trigger" id="map-search">
+              <svg class="icon"><use href="#i-search"/></svg>
+              <span>Search for help</span>
+            </button>
             <div id="map" class="map" aria-label="Map showing service locations"></div>
-            <ul id="map-legend" class="map-legend" aria-label="Map legend"></ul>
           </section>
 
-          <!-- TRANSLATE -->
-          <section id="view-translate" class="view" aria-label="Translate to plain words" hidden>
-            <h2>Write it in plain words</h2>
-            <p class="muted">Paste any text and get a plain-language version. This uses the model on the backend.</p>
-            <label class="field">
-              <span>Text to translate</span>
-              <textarea id="translate-in" rows="6"></textarea>
+          <!-- SEARCH -->
+          <section id="view-search" class="view" hidden>
+            <label class="search-field">
+              <span class="visually-hidden">Search services</span>
+              <svg class="icon"><use href="#i-search"/></svg>
+              <input type="search" id="search" placeholder="Food, warm, wifi, toilet" autocomplete="off">
             </label>
-            <button type="button" class="btn primary" id="translate-btn">Translate</button>
-            <p id="translate-status" class="status" aria-live="polite"></p>
-            <div id="translate-out" class="out-card" hidden></div>
+            <div id="category-chips" class="chips" role="group" aria-label="Filter by type"></div>
+            <p id="result-count" class="muted small" aria-live="polite"></p>
+            <ul id="service-list" class="service-list"></ul>
+            <p id="list-empty" class="empty" hidden>Nothing found. Try a different word.</p>
+          </section>
+
+          <!-- CONTACT -->
+          <section id="view-contact" class="view" hidden>
+            <div class="callout">
+              <p><strong>In danger right now?</strong> Call 999.</p>
+              <a class="btn primary" href="tel:999">Call 999</a>
+            </div>
+            <h2 class="section-title">Helplines</h2>
+            <ul id="helpline-list" class="helpline-list"></ul>
+          </section>
+
+          <!-- FAQ -->
+          <section id="view-faq" class="view" hidden>
+            <div id="faq-list" class="faq-list"></div>
+
+            <div class="panel">
+              <h2 class="section-title">Make any text simpler</h2>
+              <p class="muted">Paste a letter or form and we will rewrite it in plain words.</p>
+              <label class="field">
+                <span>Text to make simpler</span>
+                <textarea id="translate-in" rows="5"></textarea>
+              </label>
+              <button type="button" class="btn primary block" id="translate-btn">Make it simpler</button>
+              <p id="translate-status" class="status" aria-live="polite"></p>
+              <div id="translate-out" class="out-card" hidden></div>
+            </div>
+          </section>
+
+          <!-- PROFILE -->
+          <section id="view-profile" class="view" hidden>
+            <div class="panel" id="profile-account"></div>
+
+            <div class="panel">
+              <h2 class="section-title">Display</h2>
+              <div class="setting-row">
+                <div>
+                  <p class="setting-name">Text size</p>
+                  <p class="muted small" id="profile-text-size"></p>
+                </div>
+                <button type="button" class="btn" id="profile-text-btn">Change</button>
+              </div>
+              <div class="setting-row">
+                <div>
+                  <p class="setting-name">High contrast</p>
+                  <p class="muted small" id="profile-contrast"></p>
+                </div>
+                <button type="button" class="btn" id="profile-contrast-btn"></button>
+              </div>
+            </div>
           </section>
 
           <!-- DETAIL -->
-          <section id="view-detail" class="view" aria-label="Service details" hidden></section>
+          <section id="view-detail" class="view" hidden></section>
 
         </main>
-
-        <footer class="app-footer">
-          <p>Data from public sources. Details may change — please check before you go.</p>
-        </footer>
       </div>
     </div>
   </div>

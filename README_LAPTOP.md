@@ -36,7 +36,7 @@ Works on CPU (slow but fine for a demo), Apple Silicon (MPS), or an NVIDIA GPU.
 4. **Open** http://127.0.0.1:8000 in a browser. You'll see the phone frame.
 
 ## Notes
-- The **first** time you use the "Plain words" tab (or any `/api/translate`), the app
+- The **first** time you use "Make any text simpler" (on the FAQ screen) (or any `/api/translate`), the app
   downloads `Qwen/Qwen2.5-1.5B` (~3 GB) from HuggingFace and loads the LoRA adapter.
   It takes a moment; afterwards the model stays loaded in memory.
 - Precomputed service descriptions already ship in plain language in
