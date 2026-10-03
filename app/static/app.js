@@ -72,13 +72,13 @@
 
   // Pin colours per service type. Unlisted types take the next fallback colour.
   var CATEGORY_COLORS = {
-    "Food bank": "#2b8a3e",
-    "Warm space": "#f08c00",
-    "Public toilet": "#1971c2",
-    "Period": "#ae3ec9",
-    "nhs": "#0c8599",
+    "Food bank": "#c6ff5e",
+    "Warm space": "#ffd84a",
+    "Public toilet": "#5ee6e6",
+    "Period": "#ff5ec8",
+    "nhs": "#7b9bff",
   };
-  var FALLBACK_COLORS = ["#5c940d", "#862e9c", "#495057", "#a61e4d"];
+  var FALLBACK_COLORS = ["#19b5c9", "#ff9f43", "#ffffff", "#b197fc"];
 
   var $ = function (sel) { return document.querySelector(sel); };
   var $$ = function (sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); };
@@ -326,6 +326,7 @@
     if (!needsSignup() && r.view === "signup") { location.replace("#/home"); return; }
 
     VIEWS.forEach(function (v) { $("#view-" + v).hidden = (v !== r.view); });
+    $("#screen").dataset.view = r.view;
     $("#view-title").textContent = VIEW_TITLES[r.view];
     $("#back-btn").hidden = (r.view === "home" || r.view === "signup");
     $("#screen").scrollTop = 0;
@@ -494,17 +495,18 @@
 
   function buildMap() {
     state.map = L.map("map").setView([55.9533, -3.1883], 12);
+    // Standard OpenStreetMap tiles, recoloured to a night map in CSS (.night-tiles).
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 19,
+      className: "night-tiles",
       attribution: "&copy; OpenStreetMap contributors",
     }).addTo(state.map);
 
     state.services.forEach(function (s) {
       if (!hasLocation(s)) return;
-      var marker = L.circleMarker([s.location.lat, s.location.lon], {
-        radius: 9,
-        className: "marker-dot",
-        fillColor: colorFor(s.category),
+      var marker = L.marker([s.location.lat, s.location.lon], {
+        icon: starIcon(colorFor(s.category)),
+        title: s.name,
       });
       marker.bindPopup(function () { return popupFor(s); });
       state.markers[s.id] = marker;
@@ -538,9 +540,17 @@
         className: "here-accuracy",
         interactive: false,
       }).addTo(state.map);
-      state.hereMarker = L.circleMarker(ll, { radius: 11, className: "here-dot" })
-        .bindPopup("You are here")
-        .addTo(state.map);
+      state.hereMarker = L.marker(ll, {
+        icon: L.divIcon({
+          className: "here-pin",
+          html: '<svg viewBox="0 0 100 130"><use href="#pin"/></svg>',
+          iconSize: [30, 39],
+          iconAnchor: [15, 38],
+          popupAnchor: [0, -34],
+        }),
+        title: "You are here",
+        zIndexOffset: 1000,
+      }).bindPopup("You are here").addTo(state.map);
     } else {
       state.hereAccuracy.setLatLng(ll).setRadius(state.here.accuracy);
       state.hereMarker.setLatLng(ll);
@@ -581,8 +591,24 @@
   }
 
   function categoryLabelHtml(cat) {
-    return '<span class="cat"><i class="cat-dot" style="background:' + colorFor(cat) + '"></i>' +
-      esc(cat) + "</span>";
+    return '<span class="cat"><svg class="cat-star" viewBox="0 0 100 100" aria-hidden="true" style="--c:' +
+      colorFor(cat) + '"><use href="#doodle-star"/></svg>' + esc(cat) + "</span>";
+  }
+
+  // Map pins are scribbled stars in the service type's colour, with a dark halo for contrast.
+  var starIcons = {};
+  function starIcon(color) {
+    if (!starIcons[color]) {
+      starIcons[color] = L.divIcon({
+        className: "star-marker",
+        html: '<svg viewBox="0 0 100 100" style="color:' + color + '">' +
+          '<use class="halo" href="#doodle-star"/><use class="ink" href="#doodle-star"/></svg>',
+        iconSize: [30, 30],
+        iconAnchor: [15, 15],
+        popupAnchor: [0, -12],
+      });
+    }
+    return starIcons[color];
   }
 
   // Map filter: the user picks one type of service, or All.
@@ -624,7 +650,6 @@
       }
     });
     $("#map-count").textContent = shown.length === 1 ? "1 place shown" : shown.length + " places shown";
-    if (state.hereMarker) state.hereMarker.bringToFront(); // keep "you" above re-added pins
     if (zoomToResults && shown.length) {
       state.map.fitBounds(L.latLngBounds(shown), { padding: [30, 30], maxZoom: 15 });
     }

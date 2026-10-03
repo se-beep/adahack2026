@@ -6,14 +6,32 @@
   <title>LifeLine</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@500;700&display=swap">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-  <!-- Icon set. Each symbol can later be swapped for a hand-drawn version. -->
+  <!-- Icon set and hand-drawn decorations. -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <defs>
+      <!-- Slight wobble so line icons read as hand-drawn. -->
+      <filter id="wobble" x="-10%" y="-10%" width="120%" height="120%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4"/>
+        <feDisplacementMap in="SourceGraphic" scale="2.2"/>
+      </filter>
+      <linearGradient id="pin-fill" x1="0" y1="0" x2="1" y2="0.2">
+        <stop offset="0.25" stop-color="#039457"/>
+        <stop offset="1" stop-color="#5ac7c4"/>
+      </linearGradient>
+      <!-- Scribbled five-point star, drawn as one open stroke. -->
+      <symbol id="doodle-star" viewBox="0 0 100 100">
+        <path d="M24 93C31 68 40 36 51 7C58 31 68 62 80 92C60 77 31 56 6 40C36 37 66 38 95 36C73 55 46 75 17 95"/>
+      </symbol>
+      <!-- LifeLine logo: a hand-drawn map pin holding a star. -->
+      <symbol id="pin" viewBox="0 0 100 130">
+        <path d="M47 3C74 1 97 19 97 50c0 18-5 31-11 45-6 13-12 22-17 31-4 6-12 5-16-1C43 106 29 90 13 72 1 58-1 42 4 30 11 12 27 4 47 3z" fill="url(#pin-fill)"/>
+        <path d="M46.8 24.2L54.9 37.7L70.7 36.9L60.3 48.8L66.0 63.5L51.5 57.4L39.2 67.3L40.6 51.6L27.3 43.0L42.7 39.4Z" fill="#fff" stroke="#fff" stroke-width="5" stroke-linejoin="round"/>
+      </symbol>
       <symbol id="i-map" viewBox="0 0 24 24"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></symbol>
       <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
       <symbol id="i-contact" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
@@ -33,10 +51,20 @@
       <div class="screen" id="screen">
         <a class="skip-link" href="#main">Skip to main content</a>
 
+        <div class="sky-decor" aria-hidden="true">
+          <svg class="doodle d1"><use href="#doodle-star"/></svg>
+          <svg class="doodle d2"><use href="#doodle-star"/></svg>
+          <svg class="doodle d3"><use href="#doodle-star"/></svg>
+          <svg class="doodle d4"><use href="#doodle-star"/></svg>
+          <svg class="doodle d5"><use href="#doodle-star"/></svg>
+          <svg class="doodle d6"><use href="#doodle-star"/></svg>
+        </div>
+
         <header class="topbar">
           <button type="button" class="icon-btn" id="back-btn" aria-label="Back" hidden>
             <svg class="icon"><use href="#i-back"/></svg>
           </button>
+          <svg class="topbar-pin" viewBox="0 0 100 130" aria-hidden="true"><use href="#pin"/></svg>
           <h1 class="topbar-title" id="view-title" tabindex="-1">LifeLine</h1>
           <div class="topbar-tools" role="group" aria-label="Display settings">
             <button type="button" class="icon-btn text-size-btn" id="text-size-btn">
@@ -53,11 +81,12 @@
 
           <!-- SIGN UP -->
           <section id="view-signup" class="view view-signup" hidden>
-            <div class="signup-intro">
-              <p class="eyebrow">Welcome</p>
-              <h2 class="display">An accessible guide to resources near you.</h2>
-              <p class="muted">Sign up with your email or phone number to get started.</p>
+            <div class="hero">
+              <svg class="hero-pin" viewBox="0 0 100 130" aria-hidden="true"><use href="#pin"/></svg>
+              <p class="hero-title">LifeLine</p>
+              <p class="hero-tagline">An accessible guide to resources near you.</p>
             </div>
+            <p class="muted signup-hint">Sign up with your email or phone number to get started.</p>
 
             <form id="signup-form" class="stack" novalidate>
               <div class="segmented" role="group" aria-label="Sign up with">
@@ -83,7 +112,9 @@
               <a class="home-btn" href="#/search"><svg class="icon"><use href="#i-search"/></svg><span>Search</span></a>
               <a class="home-btn" href="#/contact"><svg class="icon"><use href="#i-contact"/></svg><span>Contact</span></a>
               <a class="home-btn" href="#/faq"><svg class="icon"><use href="#i-faq"/></svg><span>FAQ</span></a>
+              <svg class="doodle home-doodle" aria-hidden="true"><use href="#doodle-star"/></svg>
               <a class="home-btn" href="#/profile"><svg class="icon"><use href="#i-profile"/></svg><span>Profile</span></a>
+              <svg class="doodle home-doodle" aria-hidden="true"><use href="#doodle-star"/></svg>
             </nav>
           </section>
 
@@ -97,7 +128,7 @@
             <div id="map" class="map" aria-label="Map showing service locations"></div>
             <div class="map-footer">
               <ul class="map-legend" aria-label="Map key">
-                <li><span class="legend-dot here" aria-hidden="true"></span>You</li>
+                <li><svg class="legend-pin" viewBox="0 0 100 130" aria-hidden="true"><use href="#pin"/></svg>You</li>
               </ul>
               <p id="map-count" class="muted small" aria-live="polite"></p>
               <p id="map-status" class="muted small" aria-live="polite"></p>
