@@ -91,6 +91,31 @@
     });
   }
 
+  function renderChips() {
+    var chips = document.getElementById("category-chips");
+    chips.innerHTML = "";
+    var cats = [""].concat(state.categories);
+    cats.forEach(function (c) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "chip";
+      b.dataset.cat = c;
+      b.setAttribute("aria-pressed", state.filters.category === c ? "true" : "false");
+      b.textContent = c === "" ? "All" : iconFor(c) + " " + c;
+      b.addEventListener("click", function () { setCategory(c); });
+      chips.appendChild(b);
+    });
+  }
+
+  function setCategory(cat) {
+    state.filters.category = cat;
+    document.getElementById("category").value = cat;
+    $$(".chip").forEach(function (ch) {
+      ch.setAttribute("aria-pressed", ch.dataset.cat === cat ? "true" : "false");
+    });
+    renderList();
+  }
+
   function filtered() {
     var q = state.filters.q.toLowerCase();
     return state.services.filter(function (s) {
@@ -131,8 +156,7 @@
     renderList();
   });
   document.getElementById("category").addEventListener("change", function (e) {
-    state.filters.category = e.target.value;
-    renderList();
+    setCategory(e.target.value);
   });
 
   /* ---------- Detail ---------- */
@@ -280,6 +304,7 @@
   /* ---------- Init ---------- */
   loadData().then(function () {
     renderCategories();
+    renderChips();
     renderList();
     buildMap();
     applyFontScale();

@@ -167,6 +167,24 @@ input, select, textarea {
 }
 textarea { resize: vertical; }
 
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.chip {
+  min-height: 40px;
+  padding: 6px 12px;
+  border: 2px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.95em;
+  background: var(--bg);
+  color: var(--fg);
+  cursor: pointer;
+}
+.chip:hover { border-color: var(--accent); }
+.chip[aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-color: var(--accent);
+}
+
 .service-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
 .service-card {
   display: flex;
