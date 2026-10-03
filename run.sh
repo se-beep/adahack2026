@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Boot the Edinburgh Plain Services demo (FastAPI backend + phone-frame frontend).
+# Boot the LifeLine demo (FastAPI backend + phone-frame frontend).
 # Works on a laptop or the cluster. The translation model auto-selects its device
 # (CUDA -> Apple Silicon/MPS -> CPU), so nothing special is needed on a laptop.
 #

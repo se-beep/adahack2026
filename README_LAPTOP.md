@@ -1,4 +1,4 @@
-# Edinburgh Easy Services - run it on your laptop
+# LifeLine - run it on your laptop
 
 The whole demo, including the plain-language LLM, runs locally on your laptop.
 The heavy 1.5B base model is pulled from HuggingFace automatically; only the small

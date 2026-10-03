@@ -8,7 +8,7 @@ from . import translator
 from .data import get_provider
 from .schemas import Service, ServiceSummary, TranslateRequest, TranslateResponse
 
-app = FastAPI(title="Edinburgh Plain Services Demo")
+app = FastAPI(title="LifeLine")
 
 
 @app.middleware("http")

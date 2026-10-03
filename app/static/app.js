@@ -1,4 +1,4 @@
-/* Edinburgh Easy Services - frontend logic */
+/* LifeLine - frontend logic */
 (function () {
   "use strict";
 
@@ -6,7 +6,7 @@
   var PREFS_KEY = "ees.prefs";
   var SKIP_KEY = "ees.skippedSignup";
 
-  var APP_NAME = "Edinburgh Easy Services";
+  var APP_NAME = "LifeLine";
   var TEXT_SIZES = [
     { label: "Normal", px: 16 },
     { label: "Large", px: 19 },
