@@ -1,0 +1,139 @@
+[
+  {
+    "id": "warmspace-central",
+    "name": "Central Library Warm Space",
+    "category": "Warm space",
+    "description_original": "The Central Library operates as a designated warm space during the colder months, offering a heated public area where visitors can sit, charge devices, and access free WiFi and hot drinks while staff are on hand to signpost to further support services.",
+    "description_plain": "The Central Library is a warm place to go in winter.\nYou can sit down and get warm.\nYou can charge your phone there.\nThere is free WiFi and free hot drinks.\nStaff can tell you about other help you can get.",
+    "address": {"street": "7 George IV Bridge", "postcode": "EH1 1EG"},
+    "location": {"lat": 55.9496, "lon": -3.1913},
+    "hours": [
+      {"days": "Mon-Wed", "open": "08:00", "close": "20:00"},
+      {"days": "Thu-Fri", "open": "08:00", "close": "17:00"},
+      {"days": "Sat", "open": "09:00", "close": "17:00"}
+    ],
+    "phone": "0131 242 8000",
+    "website": "https://www.edinburgh.gov.uk/libraries",
+    "free": true,
+    "tags": ["warm", "wifi", "library"]
+  },
+  {
+    "id": "warmspace-leith",
+    "name": "Leith Community Centre Warm Hub",
+    "category": "Warm space",
+    "description_original": "Leith Community Centre opens a warm hub on weekdays, providing a welcoming heated lounge with seating, board games, free tea and coffee, and charging points for anyone who needs a warm place to spend time during the day.",
+    "description_plain": "Leith Community Centre is a warm place to spend the day.\nIt is open on weekdays.\nThere are chairs to sit on.\nThere are board games to play.\nThere is free tea and coffee.\nYou can charge your phone here.",
+    "address": {"street": "12 Newkirkgate", "postcode": "EH6 6AD"},
+    "location": {"lat": 55.9731, "lon": -3.1740},
+    "hours": [{"days": "Mon-Fri", "open": "10:00", "close": "16:00"}],
+    "phone": "0131 553 5300",
+    "free": true,
+    "tags": ["warm", "community"]
+  },
+  {
+    "id": "foodbank-northwest",
+    "name": "Edinburgh Food Project - Leith",
+    "category": "Food bank",
+    "description_original": "The Leith food bank is part of the Edinburgh Food Project network and provides emergency food parcels to local residents. Clients require a referral from a partner agency such as a GP, social worker, or Citizens Advice, and can collect a three-day supply of food.",
+    "description_plain": "The Leith food bank gives out emergency food.\nYou need a referral to get food.\nA referral is a note from someone like your GP or a social worker.\nThe food lasts for three days.\nCitizens Advice can also give you a referral.",
+    "address": {"street": "12 Jane Street", "postcode": "EH6 5HE"},
+    "location": {"lat": 55.9736, "lon": -3.1778},
+    "hours": [{"days": "Mon, Wed, Fri", "open": "12:00", "close": "14:00"}],
+    "phone": "0131 553 7700",
+    "website": "https://edinburghfoodproject.org",
+    "free": true,
+    "tags": ["food", "referral"]
+  },
+  {
+    "id": "foodbank-communityfridge",
+    "name": "Leith Community Fridge",
+    "category": "Food bank",
+    "description_original": "The Leith Community Fridge rescues surplus food from local shops and offers it free to the community. No referral or proof of need is required; anyone may take food that would otherwise be wasted.",
+    "description_plain": "The Leith Community Fridge saves food from being thrown away.\nLocal shops give food they do not sell.\nThe food is free.\nYou do not need a referral.\nAnyone can take food.",
+    "address": {"street": "5 Duke Street", "postcode": "EH6 8HR"},
+    "location": {"lat": 55.9742, "lon": -3.1720},
+    "hours": [{"days": "Daily", "open": "09:00", "close": "20:00"}],
+    "website": "https://www.leithcommunityfridge.com",
+    "free": true,
+    "tags": ["food", "no-referral"]
+  },
+  {
+    "id": "wifi-central",
+    "name": "Edinburgh Central Library Free WiFi",
+    "category": "Free WiFi",
+    "description_original": "Edinburgh Central Library provides complimentary public WiFi throughout the building to all visitors, with no time limit or library card required. Staff can assist users who need help connecting their devices.",
+    "description_plain": "Edinburgh Central Library has free WiFi.\nIt is for everyone who visits.\nYou do not need a library card.\nThere is no time limit.\nStaff can help you connect.",
+    "address": {"street": "7 George IV Bridge", "postcode": "EH1 1EG"},
+    "location": {"lat": 55.9496, "lon": -3.1913},
+    "hours": [
+      {"days": "Mon-Sat", "open": "08:00", "close": "17:00"}
+    ],
+    "phone": "0131 242 8000",
+    "free": true,
+    "tags": ["wifi", "library"]
+  },
+  {
+    "id": "toilet-city",
+    "name": "Community Toilet - City Chambers",
+    "category": "Public toilet",
+    "description_original": "This location is part of Edinburgh's Community Toilet Scheme, meaning the public toilets are open to anyone during the venue's normal opening hours, at no charge, even for those not using the venue's services.",
+    "description_plain": "This is a public toilet you can use for free.\nIt is part of a city scheme called the Community Toilet Scheme.\nYou can use it during opening hours.\nYou do not have to be a customer.",
+    "address": {"street": "253 High Street", "postcode": "EH1 1YJ"},
+    "location": {"lat": 55.9500, "lon": -3.1926},
+    "hours": [{"days": "Mon-Sat", "open": "09:00", "close": "17:00"}],
+    "free": true,
+    "tags": ["toilet", "community-toilet"]
+  },
+  {
+    "id": "advice-citizens",
+    "name": "Citizens Advice Edinburgh - Advice Shop",
+    "category": "Advice",
+    "description_original": "The Citizens Advice Edinburgh Advice Shop offers free, confidential and impartial advice on issues including benefits, debt, housing, employment, and consumer rights. Appointments and drop-in sessions are available, and interpreters can be arranged.",
+    "description_plain": "The Citizens Advice Advice Shop gives free advice.\nThe advice is private and honest.\nThey can help with benefits, money, housing, jobs, and rights.\nYou can book a time or walk in.\nAn interpreter can be arranged if you need one.",
+    "address": {"street": "58 Dundas Street", "postcode": "EH3 6QZ"},
+    "location": {"lat": 55.9589, "lon": -3.1998},
+    "hours": [{"days": "Mon-Fri", "open": "10:00", "close": "16:00"}],
+    "phone": "0800 028 1456",
+    "website": "https://www.citizensadviceedinburgh.org.uk",
+    "free": true,
+    "tags": ["advice", "benefits", "debt", "housing"]
+  },
+  {
+    "id": "museum-national",
+    "name": "National Museum of Scotland",
+    "category": "Free museum",
+    "description_original": "The National Museum of Scotland offers free admission to its permanent galleries, which cover natural history, world cultures, science and technology, and Scottish history. Temporary exhibitions may have an entry charge.",
+    "description_plain": "The National Museum of Scotland is free to enter.\nYou can see galleries about nature, the world, science, and Scottish history.\nSome special shows cost money.",
+    "address": {"street": "Chambers Street", "postcode": "EH1 1JF"},
+    "location": {"lat": 55.9470, "lon": -3.1902},
+    "hours": [{"days": "Daily", "open": "10:00", "close": "17:00"}],
+    "phone": "0300 123 6789",
+    "website": "https://www.nms.ac.uk",
+    "free": true,
+    "tags": ["museum", "free"]
+  },
+  {
+    "id": "water-refill",
+    "name": "Refill Edinburgh - Portobello",
+    "category": "Water refill",
+    "description_original": "This café participates in the Refill Edinburgh scheme, offering free tap water refills to anyone with a reusable bottle. No purchase is required to use the refill point.",
+    "description_plain": "This café gives free tap water refills.\nBring your own bottle.\nYou do not have to buy anything.",
+    "address": {"street": "179 Portobello High Street", "postcode": "EH15 1EU"},
+    "location": {"lat": 55.9522, "lon": -3.1160},
+    "hours": [{"days": "Daily", "open": "08:00", "close": "17:00"}],
+    "free": true,
+    "tags": ["water", "refill"]
+  },
+  {
+    "id": "wellbeing-dropin",
+    "name": "Edinburgh Health & Social Care Hub Drop-in",
+    "category": "Health & wellbeing",
+    "description_original": "The Health and Social Care Hub offers a free, walk-in wellbeing drop-in where residents can get support with mental health, housing, money worries, and access to other local services, without needing an appointment or referral.",
+    "description_plain": "This is a free drop-in for wellbeing.\nYou can walk in without a booking.\nStaff can help with mental health, housing, and money worries.\nThey can also tell you about other services.",
+    "address": {"street": "40 Shandwick Place", "postcode": "EH2 4RT"},
+    "location": {"lat": 55.9495, "lon": -3.2086},
+    "hours": [{"days": "Mon-Fri", "open": "09:00", "close": "17:00"}],
+    "free": true,
+    "tags": ["health", "wellbeing", "drop-in"]
+  }
+]

@@ -1,0 +1,21 @@
+# Environment
+.env
+.venv/
+__pycache__/
+*.pyc
+
+# Database (not committed)
+db/*.db
+db/*.db-wal
+db/*.db-shm
+
+# Fetched public data CSVs are committed so a fresh clone is fully runnable.
+# The SQLite database is derived from them and is NOT committed.
+data/*.db
+
+# Internal agent docs (not for public repo)
+HANDOFF.md
+
+# Build artifacts
+*.tgz
+nhs.ipynb

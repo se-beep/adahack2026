@@ -1,0 +1,37 @@
+id,n,c,a,postcode,lat,lng,days,open,close,dt,acc,t,g,org,source,student_only,registration,institution,tags,description_original,description_plain,phone,website,free
+hosp_S201H,Astley Ainslie Hospital,nhs,Grange Loan,EH9 2HL,55.928374,-3.196904,,,,See NHS inform for services and opening times,NHS hospital,NHS hospital,0,NHS Lothian,opendata.nhs.scot (hospital codes),0,0,all,nhs;hospital,Astley Ainslie Hospital is an NHS hospital in Edinburgh.,"Astley Ainslie Hospital is an NHS hospital in Edinburgh.
+Go there for NHS care.
+For emergencies, call 999.",,,1
+hosp_S203H,Chalmers Hospital,nhs,55 Lauriston Place,EH3 9HQ,,,,,,See NHS inform for services and opening times,NHS hospital,NHS hospital,0,NHS Lothian,opendata.nhs.scot (hospital codes),0,0,all,nhs;hospital,Chalmers Hospital is an NHS hospital in Edinburgh.,"Chalmers Hospital is an NHS hospital in Edinburgh.
+Go there for NHS care.
+For emergencies, call 999.",,,1
+hosp_S206H,Edinburgh Dental Institute,nhs,4th Floor,EH3 9HA,55.944076,-3.19835,,,,See NHS inform for services and opening times,NHS hospital,NHS hospital,0,NHS Lothian,opendata.nhs.scot (hospital codes),0,0,all,nhs;hospital,Edinburgh Dental Institute is an NHS hospital in Edinburgh.,"Edinburgh Dental Institute is an NHS hospital in Edinburgh.
+Go there for NHS care.
+For emergencies, call 999.",,,1
+hosp_S313H,Ellen's Glen Community Hospital,nhs,72 Carnbee Avenue,EH166FF,55.90956,-3.149676,,,,See NHS inform for services and opening times,NHS hospital,NHS hospital,0,NHS Lothian,opendata.nhs.scot (hospital codes),0,0,all,nhs;hospital,Ellen's Glen Community Hospital is an NHS hospital in Edinburgh.,"Ellen's Glen Community Hospital is an NHS hospital in Edinburgh.
+Go there for NHS care.
+For emergencies, call 999.",,,1
+hosp_S310H,Ferryfield Community Hospital,nhs,100 Pilton Drive,EH5 2HF,55.972,-3.230426,,,,See NHS inform for services and opening times,NHS hospital,NHS hospital,0,NHS Lothian,opendata.nhs.scot (hospital codes),0,0,all,nhs;hospital,Ferryfield Community Hospital is an NHS hospital in Edinburgh.,"Ferryfield Community Hospital is an NHS hospital in Edinburgh.
+Go there for NHS care.
+For emergencies, call 999.",,,1
+hosp_S315H,Findlay Community Hospital,nhs,Seafield Street,EH6 7LG,55.968027,-3.145836,,,,See NHS inform for services and opening times,NHS hospital,NHS hospital,0,NHS Lothian,opendata.nhs.scot (hospital codes),0,0,all,nhs;hospital,Findlay Community Hospital is an NHS hospital in Edinburgh.,"Findlay Community Hospital is an NHS hospital in Edinburgh.
+Go there for NHS care.
+For emergencies, call 999.",,,1
+hosp_S209H,Liberton Hospital,nhs,Lasswade Road,EH166UB,55.908943,-3.154073,,,,See NHS inform for services and opening times,NHS hospital,NHS hospital,0,NHS Lothian,opendata.nhs.scot (hospital codes),0,0,all,nhs;hospital,Liberton Hospital is an NHS hospital in Edinburgh.,"Liberton Hospital is an NHS hospital in Edinburgh.
+Go there for NHS care.
+For emergencies, call 999.",,,1
+hosp_S316H,Princess Alexandra Eye Pavilion,nhs,45 Chalmers Street,EH3 9HA,55.944076,-3.19835,,,,See NHS inform for services and opening times,NHS hospital,NHS hospital,0,NHS Lothian,opendata.nhs.scot (hospital codes),0,0,all,nhs;hospital,Princess Alexandra Eye Pavilion is an NHS hospital in Edinburgh.,"Princess Alexandra Eye Pavilion is an NHS hospital in Edinburgh.
+Go there for NHS care.
+For emergencies, call 999.",,,1
+hosp_S217H,Royal Edinburgh Hospital,nhs,23 Tipperlinn Road,EH105HF,55.927192,-3.215865,,,,See NHS inform for services and opening times,NHS hospital,NHS hospital,0,NHS Lothian,opendata.nhs.scot (hospital codes),0,0,all,nhs;hospital,Royal Edinburgh Hospital is an NHS hospital in Edinburgh.,"Royal Edinburgh Hospital is an NHS hospital in Edinburgh.
+Go there for NHS care.
+For emergencies, call 999.",,,1
+hosp_S319H,Royal Hospital for Children and Young People,nhs,50 Little France Crescent,EH164TJ,55.921125,-3.13789,,,,See NHS inform for services and opening times,NHS hospital,NHS hospital,0,NHS Lothian,opendata.nhs.scot (hospital codes),0,0,all,nhs;hospital,Royal Hospital for Children and Young People is an NHS hospital in Edinburgh.,"Royal Hospital for Children and Young People is an NHS hospital in Edinburgh.
+Go there for NHS care.
+For emergencies, call 999.",,,1
+hosp_S314H,Royal Infirmary of Edinburgh at Little France,nhs,51 Little France Crescent,EH164SA,55.921754,-3.13594,,,,See NHS inform for services and opening times,NHS hospital,NHS hospital,0,NHS Lothian,opendata.nhs.scot (hospital codes),0,0,all,nhs;hospital,Royal Infirmary of Edinburgh at Little France is an NHS hospital in Edinburgh.,"Royal Infirmary of Edinburgh at Little France is an NHS hospital in Edinburgh.
+Go there for NHS care.
+For emergencies, call 999.",,,1
+hosp_S116H,Western General Hospital,nhs,Crewe Road South,EH4 2XU,55.961802,-3.234908,,,,See NHS inform for services and opening times,NHS hospital,NHS hospital,0,NHS Lothian,opendata.nhs.scot (hospital codes),0,0,all,nhs;hospital,Western General Hospital is an NHS hospital in Edinburgh.,"Western General Hospital is an NHS hospital in Edinburgh.
+Go there for NHS care.
+For emergencies, call 999.",,,1
