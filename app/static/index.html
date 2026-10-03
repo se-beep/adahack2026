@@ -20,6 +20,9 @@
       <symbol id="i-faq" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14"/><path d="M12 17.5v.01"/></symbol>
       <symbol id="i-profile" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></symbol>
       <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+      <symbol id="i-locate" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2.5" fill="currentColor"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></symbol>
+      <symbol id="i-speaker" viewBox="0 0 24 24"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></symbol>
+      <symbol id="i-captions" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 11h4M13 11h4M7 15h7M16 15h1"/></symbol>
       <symbol id="i-contrast" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18a9 9 0 0 0 0-18z" fill="currentColor"/></symbol>
     </defs>
   </svg>
@@ -91,6 +94,13 @@
               <span>Search for help</span>
             </button>
             <div id="map" class="map" aria-label="Map showing service locations"></div>
+            <div class="map-footer">
+              <ul class="map-legend" aria-label="Map key">
+                <li><span class="legend-dot here" aria-hidden="true"></span>You</li>
+                <li><span class="legend-dot service" aria-hidden="true"></span>Services</li>
+              </ul>
+              <p id="map-status" class="muted small" aria-live="polite"></p>
+            </div>
           </section>
 
           <!-- SEARCH -->
@@ -101,6 +111,7 @@
               <input type="search" id="search" placeholder="Food, warm, wifi, toilet" autocomplete="off">
             </label>
             <div id="category-chips" class="chips" role="group" aria-label="Filter by type"></div>
+            <div id="location-note" class="location-note" aria-live="polite" hidden></div>
             <p id="result-count" class="muted small" aria-live="polite"></p>
             <ul id="service-list" class="service-list"></ul>
             <p id="list-empty" class="empty" hidden>Nothing found. Try a different word.</p>
@@ -111,6 +122,13 @@
             <div class="callout">
               <p><strong>In danger right now?</strong> Call 999.</p>
               <a class="btn primary" href="tel:999">Call 999</a>
+            </div>
+            <div class="panel">
+              <h2 class="section-title">Talking to someone in person?</h2>
+              <p class="muted">Live captions show what they say as large text on your screen.</p>
+              <a class="btn block" href="#/captions" data-from="contact">
+                <svg class="icon"><use href="#i-captions"/></svg>Turn on live captions
+              </a>
             </div>
             <h2 class="section-title">Helplines</h2>
             <ul id="helpline-list" class="helpline-list"></ul>
@@ -130,6 +148,7 @@
               <button type="button" class="btn primary block" id="translate-btn">Make it simpler</button>
               <p id="translate-status" class="status" aria-live="polite"></p>
               <div id="translate-out" class="out-card" hidden></div>
+              <div id="translate-listen" hidden></div>
             </div>
           </section>
 
@@ -153,7 +172,26 @@
                 </div>
                 <button type="button" class="btn" id="profile-contrast-btn"></button>
               </div>
+              <div class="setting-row">
+                <div>
+                  <p class="setting-name">Live captions</p>
+                  <p class="muted small">Show speech as text</p>
+                </div>
+                <a class="btn" href="#/captions" data-from="profile">Open</a>
+              </div>
             </div>
+          </section>
+
+          <!-- LIVE CAPTIONS -->
+          <section id="view-captions" class="view view-captions" hidden>
+            <p class="muted">Hold your phone near the person talking. What they say will show here.</p>
+            <div id="captions-out" class="captions-out"></div>
+            <p id="captions-status" class="status" aria-live="polite"></p>
+            <div class="captions-actions">
+              <button type="button" class="btn primary block" id="captions-toggle" aria-pressed="false">Start captions</button>
+              <button type="button" class="btn block" id="captions-clear">Clear</button>
+            </div>
+            <p class="disclaimer">Captions use your browser's speech service and may not be exact.</p>
           </section>
 
           <!-- DETAIL -->

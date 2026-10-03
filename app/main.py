@@ -10,6 +10,16 @@ from .schemas import Service, ServiceSummary, TranslateRequest, TranslateRespons
 
 app = FastAPI(title="Edinburgh Plain Services Demo")
 
+
+@app.middleware("http")
+async def no_stale_frontend(request, call_next):
+    # Make browsers revalidate the page and static files on every load, so a
+    # cached copy from an older build is never shown after an update.
+    response = await call_next(request)
+    if request.url.path == "/" or request.url.path.startswith("/static/"):
+        response.headers["Cache-Control"] = "no-cache"
+    return response
+
 _STATIC = "app/static"
 
 

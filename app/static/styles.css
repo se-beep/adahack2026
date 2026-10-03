@@ -9,6 +9,9 @@
   --accent: #2b5d8a;
   --accent-ink: #ffffff;
   --focus: #e0a100;
+  --here: #d1495b;
+  --highlight: #ffe9a8;
+  --highlight-ink: #1d1d1b;
   --alert-bg: #fbeeea;
   --alert-ink: #7d1e10;
   --radius: 14px;
@@ -27,6 +30,9 @@ body.hc {
   --accent: #ffe600;
   --accent-ink: #000000;
   --focus: #00e5ff;
+  --here: #ff4fd8;
+  --highlight: #ffe600;
+  --highlight-ink: #000000;
   --alert-bg: #000000;
   --alert-ink: #ffe600;
 }
@@ -244,6 +250,7 @@ textarea { resize: vertical; }
   font-weight: 700;
   text-decoration: none;
   cursor: pointer;
+  gap: 8px;
 }
 .btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
 .btn.block { width: 100%; }
@@ -340,6 +347,27 @@ textarea { resize: vertical; }
 }
 .leaflet-container { font-family: inherit; }
 .marker-dot { stroke: var(--ink); stroke-width: 2; fill: var(--accent); fill-opacity: 1; }
+.here-dot { fill: var(--here); fill-opacity: 1; stroke: #ffffff; stroke-width: 3; }
+.here-accuracy { fill: var(--here); fill-opacity: 0.12; stroke: var(--here); stroke-opacity: 0.5; stroke-width: 1; }
+.map-locate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+}
+.map-locate .icon { width: 22px; height: 22px; }
+.map-footer { display: flex; align-items: center; justify-content: space-between; gap: 6px 16px; flex-wrap: wrap; }
+.map-legend { display: flex; gap: 16px; margin: 0; padding: 0; list-style: none; font-size: 0.875em; }
+.map-legend li { display: flex; align-items: center; gap: 6px; }
+.legend-dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--ink); }
+.legend-dot.here { background: var(--here); border-color: var(--here); }
+.legend-dot.service { background: var(--accent); }
 .popup { display: flex; flex-direction: column; gap: 4px; font-size: 14px; }
 .popup .btn { min-height: 40px; margin-top: 6px; padding: 6px 12px; }
 
@@ -404,6 +432,15 @@ textarea { resize: vertical; }
   font-weight: 700;
   color: var(--ink);
 }
+.card-distance { font-weight: 700; color: var(--ink); }
+.location-note {
+  padding: 10px 14px;
+  border: 2px dashed var(--line-soft);
+  border-radius: 12px;
+  font-size: 0.9em;
+  color: var(--muted);
+}
+.location-note[hidden] { display: none; }
 .empty { color: var(--muted); }
 
 /* ---------- Contact ---------- */
@@ -460,6 +497,52 @@ textarea { resize: vertical; }
   line-height: 1.5;
 }
 
+/* ---------- Read aloud ---------- */
+.listen-btn {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 6px 14px 6px 10px;
+  border: 2px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.9em;
+  font-weight: 700;
+  cursor: pointer;
+}
+.listen-btn .icon { width: 1.2em; height: 1.2em; }
+.listen-btn[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.say { border-radius: 4px; transition: background-color 0.15s; }
+.say.speaking {
+  background: var(--highlight);
+  color: var(--highlight-ink);
+  box-shadow: 0 0 0 3px var(--highlight);
+}
+.faq-answer { display: flex; flex-direction: column; gap: 10px; padding: 0 2px 14px; }
+.faq-list .faq-answer p { padding: 0; }
+
+/* ---------- Live captions ---------- */
+.view-captions { gap: 12px; }
+.captions-out {
+  flex: 1;
+  min-height: 260px;
+  overflow-y: auto;
+  padding: 16px;
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-size: 1.6em;
+  line-height: 1.35;
+}
+.captions-out p { margin: 0 0 0.5em; }
+.captions-out .interim { color: var(--muted); }
+.captions-placeholder { color: var(--muted); font-size: 0.7em; }
+.captions-actions { display: grid; grid-template-columns: 2fr 1fr; gap: 10px; }
+
 /* ---------- Profile ---------- */
 .setting-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .setting-name { font-weight: 700; }
@@ -498,3 +581,4 @@ textarea { resize: vertical; }
 .hours-list li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line-soft); }
 .detail-actions { display: flex; flex-direction: column; gap: 10px; }
 .disclaimer { font-size: 0.8em; color: var(--muted); }
+.btn:disabled { opacity: 0.5; cursor: wait; }

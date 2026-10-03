@@ -25,6 +25,9 @@ _HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEFAULT_ADAPTER = os.path.join(_HERE, "models", "finetuned-base")
 
 _lock = threading.Lock()
+# Generation on MPS is not thread-safe; serialize requests so concurrent calls
+# from the server's thread pool cannot crash the process.
+_generate_lock = threading.Lock()
 _tokenizer = None
 _model = None
 _model_device = None
@@ -73,7 +76,7 @@ def translate(text: str, max_new_tokens: int = 400) -> str:
     prompt = f"{text}\n\nEasy Read:\n"
     ids = tok(prompt, return_tensors="pt")
     ids = {k: v.to(model.device) for k, v in ids.items()}
-    with torch.no_grad():
+    with _generate_lock, torch.no_grad():
         out = model.generate(**ids, do_sample=False, max_new_tokens=max_new_tokens,
                              pad_token_id=tok.pad_token_id, eos_token_id=tok.eos_token_id)
     gen = out[0][ids["input_ids"].shape[1]:]

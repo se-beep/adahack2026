@@ -20,6 +20,7 @@
     contact: "Contact",
     faq: "FAQ",
     profile: "Profile",
+    captions: "Live captions",
     detail: "Service",
   };
   var VIEWS = Object.keys(VIEW_TITLES);
@@ -59,7 +60,13 @@
     signupMethod: "email",
     searchFrom: "home",
     detailFrom: "search",
-    pendingMapFocus: null,
+    captionsFrom: "contact",
+    here: null,          // { lat, lon, accuracy } once the browser reports a position
+    locStatus: "idle",   // idle | pending | ok | denied | unavailable
+    locWatch: null,
+    hereMarker: null,
+    hereAccuracy: null,
+    mapCentered: false,
   };
 
   var $ = function (sel) { return document.querySelector(sel); };
@@ -116,6 +123,160 @@
   $("#profile-text-btn").addEventListener("click", cycleTextSize);
   $("#profile-contrast-btn").addEventListener("click", toggleContrast);
 
+  /* ---------- Location ---------- */
+  var MILES_PER_KM = 0.621371;
+  var MOVE_THRESHOLD_KM = 0.025; // ignore GPS jitter when deciding to re-sort
+
+  function hasLocation(s) {
+    return !!(s.location && (s.location.lat || s.location.lon));
+  }
+
+  function distanceKm(a, b) {
+    var toRad = Math.PI / 180;
+    var dLat = (b.lat - a.lat) * toRad;
+    var dLon = (b.lon - a.lon) * toRad;
+    var h = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(a.lat * toRad) * Math.cos(b.lat * toRad) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    return 2 * 6371 * Math.asin(Math.sqrt(h));
+  }
+
+  function distanceTo(s) {
+    return state.here && hasLocation(s) ? distanceKm(state.here, s.location) : null;
+  }
+
+  function formatDistance(km) {
+    var mi = km * MILES_PER_KM;
+    if (mi < 0.1) return "Under 0.1 miles away";
+    return (mi < 10 ? mi.toFixed(1) : Math.round(mi)) + " miles away";
+  }
+
+  function startLocating() {
+    if (state.locWatch !== null || state.locStatus === "denied") return;
+    if (!("geolocation" in navigator)) { setLocStatus("unavailable"); return; }
+    setLocStatus("pending");
+    state.locWatch = navigator.geolocation.watchPosition(onPosition, onPositionError,
+      { enableHighAccuracy: true, maximumAge: 30000, timeout: 20000 });
+  }
+
+  function onPosition(pos) {
+    var next = { lat: pos.coords.latitude, lon: pos.coords.longitude, accuracy: pos.coords.accuracy };
+    var moved = !state.here || distanceKm(state.here, next) > MOVE_THRESHOLD_KM;
+    state.here = next;
+    setLocStatus("ok");
+    updateHereMarker();
+    if (moved) renderList();
+  }
+
+  function onPositionError(err) {
+    // Once we have a fix, a later timeout just means the position is stale; keep it.
+    if (state.here && err.code !== err.PERMISSION_DENIED) return;
+    navigator.geolocation.clearWatch(state.locWatch);
+    state.locWatch = null;
+    setLocStatus(err.code === err.PERMISSION_DENIED ? "denied" : "unavailable");
+  }
+
+  function setLocStatus(status) {
+    state.locStatus = status;
+    var mapMessages = {
+      pending: "Finding your location…",
+      denied: "Location is off. Allow location for this site in your browser settings.",
+      unavailable: "We could not find your location.",
+    };
+    $("#map-status").textContent = mapMessages[status] || "";
+    renderLocationNote();
+  }
+
+  function renderLocationNote() {
+    var note = $("#location-note");
+    var s = state.locStatus;
+    note.hidden = (s === "idle" || s === "ok");
+    if (s === "pending") {
+      note.textContent = "Finding your location to show the nearest places…";
+    } else if (s === "denied") {
+      note.textContent = "Location is off, so places are not sorted by distance.";
+    } else if (s === "unavailable") {
+      note.innerHTML = "We could not find your location, so places are not sorted by distance. " +
+        '<button type="button" class="toggle-link" id="retry-location">Try again</button>';
+      $("#retry-location").addEventListener("click", startLocating);
+    }
+  }
+
+  /* ---------- Read aloud ---------- */
+  var synth = window.speechSynthesis || null;
+  var readingBtn = null;
+
+  // Wrap each sentence in a span so it can be highlighted while spoken.
+  // Line breaks are kept, since plain-words text puts one idea on each line.
+  function sentencesHtml(text) {
+    return String(text || "").split(/\n+/).map(function (line) {
+      var parts = line.match(/[^.!?]+[.!?]*/g) || [];
+      return parts.map(function (part) { return part.trim(); }).filter(Boolean).map(function (part) {
+        return '<span class="say">' + esc(part) + "</span>";
+      }).join(" ");
+    }).filter(Boolean).join("\n");
+  }
+
+  function listenButtonHtml() {
+    if (!synth) return "";
+    return '<button type="button" class="listen-btn" aria-pressed="false">' +
+      '<svg class="icon"><use href="#i-speaker"/></svg><span class="listen-label">Listen</span></button>';
+  }
+
+  // Hook up a Listen button to read every .say element inside root, in order.
+  function bindListen(btn, root) {
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      readAloud(Array.prototype.slice.call(root.querySelectorAll(".say")), btn);
+    });
+  }
+
+  function setListening(btn, on) {
+    btn.setAttribute("aria-pressed", on ? "true" : "false");
+    btn.querySelector(".listen-label").textContent = on ? "Stop" : "Listen";
+  }
+
+  function pickVoice() {
+    var voices = synth.getVoices();
+    return voices.filter(function (v) { return v.lang === "en-GB" && v.localService; })[0] ||
+      voices.filter(function (v) { return v.lang === "en-GB"; })[0] || null;
+  }
+
+  function stopReading() {
+    if (!synth) return;
+    synth.cancel();
+    $$(".say.speaking").forEach(function (el) { el.classList.remove("speaking"); });
+    if (readingBtn) setListening(readingBtn, false);
+    readingBtn = null;
+  }
+
+  function readAloud(els, btn) {
+    var toggledOff = (readingBtn === btn);
+    stopReading();
+    if (toggledOff || !els.length) return;
+    readingBtn = btn;
+    setListening(btn, true);
+    var voice = pickVoice();
+    // One utterance per sentence: boundary events are unreliable across browsers.
+    els.forEach(function (el, i) {
+      var u = new SpeechSynthesisUtterance(el.dataset.say || el.textContent);
+      u.lang = "en-GB";
+      u.rate = 0.9;
+      if (voice) u.voice = voice;
+      u.onstart = function () {
+        el.classList.add("speaking");
+        el.scrollIntoView({ block: "nearest", behavior: "smooth" });
+      };
+      u.onend = function () {
+        el.classList.remove("speaking");
+        if (i === els.length - 1 && readingBtn === btn) {
+          setListening(btn, false);
+          readingBtn = null;
+        }
+      };
+      synth.speak(u);
+    });
+  }
+
   /* ---------- Data loading ---------- */
   var dataReady = Promise.all([
     fetch("/api/services").then(function (r) { return r.json(); }),
@@ -139,6 +300,7 @@
   function backTarget(view) {
     if (view === "detail") return state.detailFrom;
     if (view === "search") return state.searchFrom;
+    if (view === "captions") return state.captionsFrom;
     return "home";
   }
 
@@ -155,7 +317,10 @@
     $("#view-title").textContent = VIEW_TITLES[r.view];
     $("#back-btn").hidden = (r.view === "home" || r.view === "signup");
     $("#screen").scrollTop = 0;
+    stopReading();
+    if (r.view !== "captions") stopCaptions();
 
+    if (r.view === "map" || r.view === "search") startLocating();
     if (r.view === "map") showMap(r.id);
     else if (r.view === "detail") showDetail(r.id);
     else if (r.view === "profile") renderProfile();
@@ -258,12 +423,28 @@
     });
   }
 
+  // Nearest first when we know where the user is; places without coordinates go last.
+  function sortByDistance(items, km) {
+    if (!state.here) return items;
+    return items.sort(function (a, b) {
+      var da = km[a.id], db = km[b.id];
+      if (da === null) return db === null ? 0 : 1;
+      if (db === null) return -1;
+      return da - db;
+    });
+  }
+
   function renderList() {
     var list = $("#service-list");
+    var km = {};
     var items = filtered();
+    items.forEach(function (s) { km[s.id] = distanceTo(s); });
+    sortByDistance(items, km);
+
     list.innerHTML = "";
     $("#list-empty").hidden = items.length > 0;
-    $("#result-count").textContent = items.length === 1 ? "1 place" : items.length + " places";
+    $("#result-count").textContent = (items.length === 1 ? "1 place" : items.length + " places") +
+      (state.here && items.length > 1 ? ", nearest first" : "");
     items.forEach(function (s) {
       var li = document.createElement("li");
       var btn = document.createElement("button");
@@ -272,6 +453,7 @@
       btn.innerHTML =
         '<span class="card-name">' + esc(s.name) + '</span>' +
         '<span class="card-meta">' +
+          (km[s.id] !== null ? '<span class="card-distance">' + formatDistance(km[s.id]) + '</span>' : "") +
           '<span>' + esc(s.category) + '</span>' +
           '<span class="tag">' + (s.free ? "Free" : "May cost money") + '</span>' +
         '</span>';
@@ -306,6 +488,7 @@
     }).addTo(state.map);
 
     state.services.forEach(function (s) {
+      if (!hasLocation(s)) return;
       var marker = L.circleMarker([s.location.lat, s.location.lon], {
         radius: 9,
         className: "marker-dot",
@@ -313,13 +496,55 @@
       marker.bindPopup(function () { return popupFor(s); });
       state.markers[s.id] = marker;
     });
+
+    var LocateControl = L.Control.extend({
+      options: { position: "topright" },
+      onAdd: function () {
+        var btn = L.DomUtil.create("button", "map-locate");
+        btn.type = "button";
+        btn.setAttribute("aria-label", "Show my location");
+        btn.innerHTML = '<svg class="icon"><use href="#i-locate"/></svg>';
+        L.DomEvent.disableClickPropagation(btn);
+        L.DomEvent.on(btn, "click", function () {
+          if (state.here) state.map.setView([state.here.lat, state.here.lon], 15);
+          else startLocating();
+        });
+        return btn;
+      },
+    });
+    new LocateControl().addTo(state.map);
+  }
+
+  function updateHereMarker() {
+    if (!state.map || !state.here) return;
+    var ll = [state.here.lat, state.here.lon];
+    if (!state.hereMarker) {
+      state.hereAccuracy = L.circle(ll, {
+        radius: state.here.accuracy,
+        className: "here-accuracy",
+        interactive: false,
+      }).addTo(state.map);
+      state.hereMarker = L.circleMarker(ll, { radius: 8, className: "here-dot" })
+        .bindPopup("You are here")
+        .addTo(state.map);
+    } else {
+      state.hereAccuracy.setLatLng(ll).setRadius(state.here.accuracy);
+      state.hereMarker.setLatLng(ll);
+    }
+    // Centre on the user the first time only, so we never yank the map away mid-pan.
+    if (!state.mapCentered) {
+      state.mapCentered = true;
+      state.map.setView(ll, 14);
+    }
   }
 
   function popupFor(s) {
+    var km = distanceTo(s);
     var el = document.createElement("div");
     el.className = "popup";
     el.innerHTML =
       "<strong>" + esc(s.name) + "</strong>" +
+      (km !== null ? "<span>" + formatDistance(km) + "</span>" : "") +
       "<span>" + esc(s.category) + "</span>" +
       "<span>" + esc(s.address.street) + ", " + esc(s.address.postcode) + "</span>";
     var btn = document.createElement("button");
@@ -342,9 +567,11 @@
         state.map.invalidateSize();
         var marker = focusId && state.markers[focusId];
         if (marker) {
+          state.mapCentered = true;
           state.map.setView(marker.getLatLng(), 15);
           marker.openPopup();
         }
+        updateHereMarker();
       }, 50);
     });
   }
@@ -362,9 +589,11 @@
   }
 
   function renderDetail(s) {
+    var km = distanceTo(s);
     var hours = s.hours.map(function (h) {
       var t = h.open && h.close ? (h.open + " – " + h.close) : (h.note || "Open");
-      return "<li><span>" + esc(h.days) + "</span><span>" + esc(t) + "</span></li>";
+      return '<li class="say" data-say="' + esc(h.days + ": " + t.replace("\u2013", "to")) + '">' +
+        "<span>" + esc(h.days) + "</span><span>" + esc(t) + "</span></li>";
     }).join("");
     var phone = s.phone
       ? '<a class="btn primary block" href="tel:' + esc(s.phone) + '">Call ' + esc(s.phone) + "</a>"
@@ -377,16 +606,21 @@
     el.innerHTML =
       '<article class="detail">' +
         '<div class="row">' +
-          '<h2>' + esc(s.name) + '</h2>' +
-          '<span class="card-meta"><span>' + esc(s.category) + '</span>' +
+          '<h2 class="say">' + esc(s.name) + '</h2>' +
+          '<span class="card-meta">' +
+            (km !== null ? '<span class="card-distance">' + formatDistance(km) + '</span>' : "") +
+            '<span>' + esc(s.category) + '</span>' +
             '<span class="tag">' + (s.free ? "Free" : "May cost money") + '</span></span>' +
+          listenButtonHtml() +
         '</div>' +
         '<div class="row"><span class="label">About</span>' +
-          '<p class="plain" id="plain-desc">' + esc(s.description_plain) + '</p>' +
+          '<p class="plain" id="plain-desc">' + sentencesHtml(s.description_plain) + '</p>' +
           '<button type="button" class="toggle-link" id="toggle-original">Show original wording</button>' +
         '</div>' +
         '<div class="row"><span class="label">Address</span>' +
-          '<div class="address-box"><span>' + esc(s.address.street) + ", " + esc(s.address.postcode) + '</span>' +
+          '<div class="address-box"><span class="say" data-say="' +
+            esc("Address: " + s.address.street + ", " + s.address.postcode) + '">' +
+            esc(s.address.street) + ", " + esc(s.address.postcode) + '</span>' +
             '<button type="button" class="btn" id="copy-address">Copy</button></div>' +
         '</div>' +
         (hours ? '<div class="row"><span class="label">Opening hours</span><ul class="hours-list">' + hours + '</ul></div>' : "") +
@@ -398,10 +632,13 @@
         '<p class="disclaimer">Details may change. Please check before you go.</p>' +
       '</article>';
 
+    bindListen(el.querySelector(".listen-btn"), el);
+
     var showPlain = true;
     $("#toggle-original").addEventListener("click", function (e) {
       showPlain = !showPlain;
-      $("#plain-desc").textContent = showPlain ? s.description_plain : s.description_original;
+      stopReading();
+      $("#plain-desc").innerHTML = sentencesHtml(showPlain ? s.description_plain : s.description_original);
       e.target.textContent = showPlain ? "Show original wording" : "Show plain wording";
     });
     $("#copy-address").addEventListener("click", function () {
@@ -434,8 +671,10 @@
   /* ---------- FAQ ---------- */
   function renderFaqs() {
     $("#faq-list").innerHTML = FAQS.map(function (f) {
-      return "<details><summary>" + esc(f.q) + "</summary><p>" + esc(f.a) + "</p></details>";
+      return '<details><summary><span class="say">' + esc(f.q) + "</span></summary>" +
+        '<div class="faq-answer"><p>' + sentencesHtml(f.a) + "</p>" + listenButtonHtml() + "</div></details>";
     }).join("");
+    $$("#faq-list details").forEach(function (d) { bindListen(d.querySelector(".listen-btn"), d); });
   }
 
   function translateText() {
@@ -443,8 +682,12 @@
     var status = $("#translate-status");
     var out = $("#translate-out");
     if (!text) { status.textContent = "Please paste some text first."; return; }
+    var btn = $("#translate-btn");
+    btn.disabled = true;
     status.textContent = "Working on it… this can take a moment the first time.";
     out.hidden = true;
+    $("#translate-listen").hidden = true;
+    stopReading();
     fetch("/api/translate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -454,14 +697,109 @@
       return r.json();
     }).then(function (res) {
       status.textContent = "Here it is in plain words:";
-      out.textContent = res.plain;
+      out.innerHTML = sentencesHtml(res.plain);
       out.hidden = false;
+      var listen = $("#translate-listen");
+      listen.innerHTML = listenButtonHtml();
+      listen.hidden = !synth;
+      bindListen(listen.querySelector(".listen-btn"), out);
     }).catch(function (err) {
       status.textContent = "Sorry, this is not working right now.";
       console.error(err);
+    }).then(function () {
+      btn.disabled = false;
     });
   }
   $("#translate-btn").addEventListener("click", translateText);
+
+  /* ---------- Live captions ---------- */
+  var Recognition = window.SpeechRecognition || window.webkitSpeechRecognition || null;
+  var captions = { rec: null, on: false, lines: [], interim: "" };
+
+  function renderCaptions() {
+    var out = $("#captions-out");
+    if (!captions.lines.length && !captions.interim) {
+      out.innerHTML = '<p class="captions-placeholder">Captions will show here.</p>';
+      return;
+    }
+    out.innerHTML = captions.lines.map(function (line) { return "<p>" + esc(line) + "</p>"; }).join("") +
+      (captions.interim ? '<p class="interim">' + esc(captions.interim) + "</p>" : "");
+    out.scrollTop = out.scrollHeight;
+  }
+
+  function setCaptionsOn(on, message) {
+    captions.on = on;
+    var btn = $("#captions-toggle");
+    btn.textContent = on ? "Stop captions" : "Start captions";
+    btn.setAttribute("aria-pressed", on ? "true" : "false");
+    $("#captions-status").textContent = message || (on ? "Listening\u2026" : "");
+  }
+
+  function createRecognizer() {
+    var rec = new Recognition();
+    rec.lang = "en-GB";
+    rec.continuous = true;
+    rec.interimResults = true;
+    rec.onresult = function (e) {
+      var interim = "";
+      for (var i = e.resultIndex; i < e.results.length; i++) {
+        var text = e.results[i][0].transcript.trim();
+        if (!text) continue;
+        if (e.results[i].isFinal) captions.lines.push(text.charAt(0).toUpperCase() + text.slice(1));
+        else interim += text + " ";
+      }
+      captions.interim = interim.trim();
+      renderCaptions();
+    };
+    rec.onerror = function (e) {
+      var messages = {
+        "not-allowed": "The microphone is blocked. Allow it for this site in your browser settings.",
+        "service-not-allowed": "The microphone is blocked. Allow it for this site in your browser settings.",
+        "audio-capture": "No microphone was found.",
+        "network": "Live captions need an internet connection.",
+      };
+      if (messages[e.error]) setCaptionsOn(false, messages[e.error]);
+      // "no-speech" and "aborted" are routine; onend restarts listening.
+    };
+    rec.onend = function () {
+      // Browsers stop listening after a pause, so restart until the user stops.
+      if (!captions.on) return;
+      try { rec.start(); } catch (err) { setCaptionsOn(false); }
+    };
+    return rec;
+  }
+
+  function startCaptions() {
+    if (!Recognition) {
+      $("#captions-status").textContent = "Live captions do not work in this browser. Try Chrome or Safari.";
+      return;
+    }
+    stopReading();
+    if (!captions.rec) captions.rec = createRecognizer();
+    setCaptionsOn(true);
+    try { captions.rec.start(); } catch (err) { /* already listening */ }
+  }
+
+  function stopCaptions() {
+    if (!captions.on) return;
+    setCaptionsOn(false);
+    captions.rec.stop();
+    if (captions.interim) captions.lines.push(captions.interim);
+    captions.interim = "";
+    renderCaptions();
+  }
+
+  $("#captions-toggle").addEventListener("click", function () {
+    if (captions.on) stopCaptions(); else startCaptions();
+  });
+  $("#captions-clear").addEventListener("click", function () {
+    captions.lines = [];
+    captions.interim = "";
+    renderCaptions();
+  });
+  $$('a[href="#/captions"]').forEach(function (a) {
+    a.addEventListener("click", function () { state.captionsFrom = a.dataset.from; });
+  });
 
   /* ---------- Profile ---------- */
   function renderProfile() {
@@ -501,5 +839,6 @@
   applyPrefs();
   renderHelplines();
   renderFaqs();
+  renderCaptions();
   route();
 })();
