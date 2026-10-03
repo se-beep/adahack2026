@@ -731,3 +731,7 @@ textarea { resize: vertical; }
   .splash.leaving,
   .splash.leaving * { animation: none !important; transition: none !important; }
 }
+
+/* ---------- Young Scot ---------- */
+.home-btn[hidden] { display: none; }
+.ys-photo { width: 100%; border: 2px solid var(--line-soft); border-radius: var(--radius); }

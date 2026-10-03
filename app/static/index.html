@@ -24,6 +24,7 @@
       <symbol id="i-speaker" viewBox="0 0 24 24"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></symbol>
       <symbol id="i-captions" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 11h4M13 11h4M7 15h7M16 15h1"/></symbol>
       <symbol id="i-nhs" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M12 7.5v9M7.5 12h9"/></symbol>
+      <symbol id="i-card" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><circle cx="8.5" cy="11" r="2.2"/><path d="M5.5 16c.6-1.6 1.7-2.4 3-2.4s2.4.8 3 2.4M14 10h4.5M14 13.5h3"/></symbol>
       <symbol id="i-contrast" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18a9 9 0 0 0 0-18z" fill="currentColor"/></symbol>
     </defs>
   </svg>
@@ -85,7 +86,7 @@
                 <li>Community fridges</li>
                 <li>Warm spaces</li>
               </ul>
-              <p class="ob-note"><strong>Studying here?</strong> LifeLine is your student lifeline too. Register with the NHS and find your nearest GP.</p>
+              <p class="ob-note"><strong>Studying here?</strong> LifeLine is your student lifeline too. Register with the NHS, get your Young Scot card and see what it gets you.</p>
               <div class="stack">
                 <button type="button" class="btn primary block" data-go="student">Get started</button>
                 <button type="button" class="btn block" data-go="login">I already have an account</button>
@@ -95,7 +96,7 @@
 
             <div class="ob-step" data-step="student" hidden>
               <h2 class="display" tabindex="-1">Are you a student?</h2>
-              <p class="muted">Students get extra help, like NHS guides.</p>
+              <p class="muted">Students get extra help, like NHS and Young Scot guides.</p>
               <div class="stack">
                 <button type="button" class="btn choice block" data-student="yes">Yes, I am a student</button>
                 <button type="button" class="btn choice block" data-student="no">No</button>
@@ -168,6 +169,7 @@
               <a class="home-btn" href="#/nhs"><svg class="icon"><use href="#i-nhs"/></svg><span>NHS and GP</span></a>
               <a class="home-btn" href="#/contact"><svg class="icon"><use href="#i-contact"/></svg><span>Contact</span></a>
               <a class="home-btn" href="#/faq"><svg class="icon"><use href="#i-faq"/></svg><span>FAQ</span></a>
+              <a class="home-btn" href="#/youngscot" id="home-youngscot" hidden><svg class="icon"><use href="#i-card"/></svg><span>Young Scot</span></a>
               <a class="home-btn" href="#/profile"><svg class="icon"><use href="#i-profile"/></svg><span>Profile</span></a>
             </nav>
           </section>
@@ -232,6 +234,62 @@
               <ul id="miu-list" class="service-list"></ul>
             </div>
             <p class="disclaimer">This advice comes from NHS inform. It does not replace seeing a doctor, nurse or pharmacist.</p>
+          </section>
+
+          <!-- YOUNG SCOT (students only) -->
+          <section id="view-youngscot" class="view" hidden>
+            <div class="panel">
+              <h2 class="section-title">My Young Scot card</h2>
+              <p class="muted">Keep a photo of your card and its number here. They stay on this phone only.</p>
+              <img id="ys-photo" class="ys-photo" alt="Photo of your Young Scot card" hidden>
+              <div class="btn-row">
+                <label class="btn" for="ys-file" id="ys-file-label">Add a photo</label>
+                <button type="button" class="btn" id="ys-photo-remove" hidden>Remove photo</button>
+              </div>
+              <input type="file" id="ys-file" class="visually-hidden" accept="image/*">
+              <label class="field">
+                <span>Card number</span>
+                <input id="ys-number" type="text" inputmode="numeric" autocomplete="off" placeholder="The long number on your card">
+              </label>
+              <p id="ys-status" class="status" aria-live="polite"></p>
+            </div>
+
+            <div class="panel">
+              <h2 class="section-title">How to get a Young Scot card</h2>
+              <p class="muted">The card is free if you are aged 11 to 25 and live in Scotland.</p>
+              <ol class="steps">
+                <li>Apply online at getyournec.scot. You will need a photo of your face and proof of who you are, like a passport.</li>
+                <li>Or apply in person at an Edinburgh library. Book a time with the library first.</li>
+                <li>Your card comes in the post.</li>
+              </ol>
+              <a class="btn block" href="https://getyournec.scot" target="_blank" rel="noopener">Apply at getyournec.scot</a>
+            </div>
+
+            <div class="panel">
+              <h2 class="section-title">What your card gets you</h2>
+              <ul class="steps">
+                <li><strong>Free bus travel</strong> if you are under 22. Ask for it when you apply for your card.</li>
+                <li><strong>Money off</strong> in shops, cafes and online. Show your card or use the Young Scot app.</li>
+                <li><strong>Proof of age.</strong> The card has the PASS logo, so it works as ID.</li>
+                <li><strong>Rewards.</strong> Collect points on young.scot and swap them for prizes.</li>
+                <li><strong>£1 entry</strong> to Historic Scotland and National Trust for Scotland places.</li>
+                <li><strong>Cheaper trains</strong> if you are 16, 17 or 18.</li>
+              </ul>
+              <a class="btn block" href="https://young.scot/the-young-scot-card/" target="_blank" rel="noopener">See all discounts on young.scot</a>
+            </div>
+
+            <div class="panel">
+              <h2 class="section-title">Lost your card?</h2>
+              <ol class="steps">
+                <li>Ask for a new one online at getyournec.scot. You do not need to fill in the whole form again.</li>
+                <li>Or go to a library and ask for a replacement Young Scot card. Phone first to book a time.</li>
+                <li>Need help? Email one-edinburgh@edinburgh.gov.uk</li>
+              </ol>
+              <a class="btn block" href="https://getyournec.scot" target="_blank" rel="noopener">Replace my card online</a>
+              <h3 class="section-title">Libraries near you</h3>
+              <div class="near-origin" data-near="library"></div>
+              <ul id="library-list" class="service-list"></ul>
+            </div>
           </section>
 
           <!-- MAP -->

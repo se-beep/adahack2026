@@ -7,6 +7,7 @@
   var SKIP_KEY = "ees.skippedSignup";
   var GP_KEY = "ees.gp";
   var HOME_KEY = "ees.homePostcode";
+  var YS_KEY = "ees.youngscot";
 
   var APP_NAME = "LifeLine";
   // The four universities in Edinburgh. Keep in step with STUDENT_DOMAINS in app/auth.py.
@@ -26,6 +27,7 @@
     profile: "Profile",
     nhs: "NHS and GP",
     injury: "Injury help",
+    youngscot: "Young Scot",
     captions: "Live captions",
     detail: "Service",
   };
@@ -331,6 +333,8 @@
     return "home";
   }
 
+  function isStudent() { return !!(state.user && state.user.student); }
+
   function needsSignup() {
     return !state.user && !load(SKIP_KEY, sessionStorage);
   }
@@ -342,14 +346,16 @@
 
     VIEWS.forEach(function (v) { $("#view-" + v).hidden = (v !== r.view); });
     $("#view-title").textContent = VIEW_TITLES[r.view];
+    $("#home-youngscot").hidden = !isStudent();
+    if (r.view === "youngscot" && !isStudent()) { location.replace("#/home"); return; }
     if (r.view === "signup") showStep(state.onboard.step);
     else $("#back-btn").hidden = (r.view === "home");
     $("#screen").scrollTop = 0;
     stopReading();
     if (r.view !== "captions") stopCaptions();
 
-    if (["map", "search", "nhs", "injury"].indexOf(r.view) !== -1) startLocating();
-    if (r.view === "nhs" || r.view === "injury") renderNearby();
+    if (["map", "search", "nhs", "injury", "youngscot"].indexOf(r.view) !== -1) startLocating();
+    if (r.view === "nhs" || r.view === "injury" || r.view === "youngscot") renderNearby();
     if (r.view === "map") showMap(r.id);
     else if (r.view === "detail") showDetail(r.id);
     else if (r.view === "profile") renderProfile();
@@ -559,6 +565,7 @@
   var NEARBY = {
     gp:       { list: "#gp-list", tag: "gp", count: 5 },
     pharmacy: { list: "#pharmacy-list", tag: "pharmacy", count: 3 },
+    library:  { list: "#library-list", tag: "library", count: 3 },
     miu:      { list: "#miu-list", tag: "miu", count: 5 },
   };
 
@@ -782,6 +789,56 @@
     if (!chip) return;
     state.injury = chip.dataset.injury;
     renderInjury();
+  });
+
+  /* ---------- Young Scot card ---------- */
+  // The photo and number never leave this device.
+  var PHOTO_MAX_PX = 1000;
+
+  function renderYoungScot() {
+    var ys = load(YS_KEY) || {};
+    $("#ys-photo").hidden = !ys.photo;
+    if (ys.photo) $("#ys-photo").src = ys.photo; else $("#ys-photo").removeAttribute("src");
+    $("#ys-photo-remove").hidden = !ys.photo;
+    $("#ys-file-label").textContent = ys.photo ? "Change photo" : "Add a photo";
+    if (document.activeElement !== $("#ys-number")) $("#ys-number").value = ys.number || "";
+  }
+
+  function saveYoungScot(changes, message) {
+    var ys = load(YS_KEY) || {};
+    Object.keys(changes).forEach(function (k) { ys[k] = changes[k]; });
+    try {
+      localStorage.setItem(YS_KEY, JSON.stringify(ys));
+      $("#ys-status").textContent = message;
+    } catch (e) {
+      $("#ys-status").textContent = "We could not save that on this phone.";
+    }
+    renderYoungScot();
+  }
+
+  $("#ys-file").addEventListener("change", function (e) {
+    var file = e.target.files[0];
+    e.target.value = "";
+    if (!file) return;
+    var img = new Image();
+    img.onload = function () {
+      // Shrink the photo so it fits in the browser's small storage space.
+      var scale = Math.min(1, PHOTO_MAX_PX / Math.max(img.width, img.height));
+      var canvas = document.createElement("canvas");
+      canvas.width = Math.round(img.width * scale);
+      canvas.height = Math.round(img.height * scale);
+      canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
+      URL.revokeObjectURL(img.src);
+      saveYoungScot({ photo: canvas.toDataURL("image/jpeg", 0.8) }, "Photo saved on this phone.");
+    };
+    img.onerror = function () { $("#ys-status").textContent = "We could not open that photo."; };
+    img.src = URL.createObjectURL(file);
+  });
+  $("#ys-photo-remove").addEventListener("click", function () {
+    saveYoungScot({ photo: null }, "Photo removed.");
+  });
+  $("#ys-number").addEventListener("input", function (e) {
+    saveYoungScot({ number: e.target.value.trim() }, "Card number saved on this phone.");
   });
 
   /* ---------- Search ---------- */
@@ -1272,7 +1329,7 @@
         }
         state.user = null;
         state.gp = null;
-        [USER_KEY, GP_KEY].forEach(function (key) { remove(key); });
+        [USER_KEY, GP_KEY, YS_KEY].forEach(function (key) { remove(key); });
         remove(SKIP_KEY, sessionStorage);
         go("signup");
       });
@@ -1302,6 +1359,7 @@
   renderFaqs();
   renderCaptions();
   renderInjury();
+  renderYoungScot();
   route();
 
   // Signed in on this device before: pick up anything changed on the account,
@@ -1320,6 +1378,7 @@
         state.user.year = user.year;
         save(USER_KEY, state.user);
         if (user.gp_id) setMyGp(user.gp_id, true);
+        $("#home-youngscot").hidden = !isStudent();
       });
     }).catch(function () { /* offline: keep what is saved on this device */ });
   }
