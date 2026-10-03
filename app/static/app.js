@@ -23,6 +23,7 @@
     "Water refill": "\u{1F4A7}",
     "Health & wellbeing": "\u{2764}\uFE0F",
     "nhs": "\u2695\uFE0F",
+    "Period": "\u{1FA78}",
   };
   function iconFor(cat) { return CATEGORY_ICONS[cat] || "\u{1F4CD}"; }
 
